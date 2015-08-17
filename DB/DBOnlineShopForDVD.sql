@@ -14,6 +14,10 @@ create table RelaUser
 	ru_id int primary key,
 	name varchar(20) not null
 )
+insert into RelaUser values
+(1,'master'),
+(2,'admin'),
+(3,'customer')
 create table [Login]
 (
 	[user] varchar(20) primary key,
@@ -23,6 +27,9 @@ create table [Login]
 	active bit,
 	constraint fk_LoginRelaUser foreign key(ru_id) references RelaUser(ru_id)
 )
+insert into [Login] values
+('admin','admin',0,1,1)
+
 create table UserDetail
 (
 	ud_id int identity (1,1) primary key,
@@ -49,7 +56,6 @@ create table MonneyOfUser
 	mou_id int identity (1,1) primary key,
 	monney float DEFAULT 0 not null,
 	ud_id int,
-	active bit,
 	constraint fk_MonneyOfUserUserDetail foreign key(ud_id) references UserDetail(ud_id)
 )
 create table Categories
@@ -90,6 +96,25 @@ create table HistoryOder
 	constraint fk_HistoryOderLogin foreign key([user]) references [Login]([user]),
 	constraint fk_HistoryOderProducts foreign key(p_id) references Products(p_id),
 	constraint fk_HistoryOderPaymentType foreign key(pt_id) references PaymentType(pt_id)
+)
+create table HistoryManager
+(
+	hm_id int identity (1,1) primary key,
+	dateoder varchar(50) not null,
+	[user] varchar(20) not null,
+	p_id int not null,
+	desription varchar(20),
+	constraint fk_HistoryManagerLogin foreign key([user]) references [Login]([user]),
+	constraint fk_HistoryManagerProduct foreign key(p_id) references Products(p_id)
+)
+
+Create table HistoryMonneyOfCustomer
+(
+	hmoc_id int identity(1,1) primary key,
+	UserCustomer varchar(20) not null,
+	UserAdmin varchar(20) not null,
+	constraint fk_HistoryMonneyOfCustomerLoginCustomer foreign key(UserCustomer) references [Login]([user]),
+	constraint fk_HistoryMonneyOfCustomerLoginAdmin foreign key(UserAdmin) references [Login]([user]),
 )
 
 create table FeedBack
