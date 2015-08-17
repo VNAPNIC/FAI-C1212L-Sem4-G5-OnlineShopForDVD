@@ -22,6 +22,7 @@ public class LoginModel extends DataAccessHelper{
     private static final String CHECK_LOGIN = "select * from [Login] where [user] =? and [password]=? and ru_id =? and [status] =? and active =?";
     private static final String GET_PROFILE = "select * from [Login]";
     private static final String REGISTER = "insert into [Login] values (?,?,?,?,?)";
+    private static final String GET_TOP_1 = "SELECT TOP(1) PERCENT * FROM  [Login] ORDER  by ru_id DESC";
     
     public String[] checkLogin(String user,String pass,int rela,boolean status,boolean active)
     {
@@ -59,7 +60,16 @@ public class LoginModel extends DataAccessHelper{
             con = getConnection();
             if(con!=null)
             {
-                
+                PreparedStatement ps = con.prepareStatement(REGISTER);
+                ps.setString(1, l.getUser());
+                ps.setString(2, l.getPass());
+                ps.setBoolean(3,l.isStatus());
+                ps.setInt(4,l.getRu_id());
+                ps.setBoolean(5,l.isActive());
+                int rs = ps.executeUpdate();
+                if(rs >0){
+                    check = true;
+                }
             }
             getClose();
         } catch (Exception e) {

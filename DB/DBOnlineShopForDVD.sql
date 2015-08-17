@@ -1,6 +1,5 @@
 use master
 go
-
 IF EXISTS (SELECT name FROM master.sys.databases WHERE name = N'OnlineShopForDVD')
 drop database OnlineShopForDVD
 ELSE
@@ -18,8 +17,10 @@ insert into RelaUser values
 (1,'master'),
 (2,'admin'),
 (3,'customer')
+SELECT TOP(1) PERCENT * FROM  RelaUser ORDER  by ru_id DESC
 create table [Login]
 (
+	number int identity(1,1) not null,
 	[user] varchar(20) primary key,
 	[password] varchar(20) not null,
 	[status] bit,
@@ -28,7 +29,11 @@ create table [Login]
 	constraint fk_LoginRelaUser foreign key(ru_id) references RelaUser(ru_id)
 )
 insert into [Login] values
-('admin','admin',0,1,1)
+('master','master',0,1,1),
+('admin','admin',0,2,1),
+('hainam','123456',0,3,1),
+('trungkien','123456',0,3,1),
+('vanhiep','123456',0,3,1)
 
 create table UserDetail
 (
@@ -71,6 +76,7 @@ create table Products
 	monney float default 0 not null, 
 	[description] nvarchar(250) not null,
 	url varchar(150),
+	img varchar(150),
 	c_id int,
 	[rank] int default 0,
 	active bit,
