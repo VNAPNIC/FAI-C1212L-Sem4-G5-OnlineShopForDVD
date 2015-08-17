@@ -47,4 +47,6 @@ public class UserDetailModel extends DataAccessHelper{
         }
         return item;
     }
+    
+   
 }
