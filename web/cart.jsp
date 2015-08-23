@@ -1,18 +1,18 @@
 <%-- 
-    Document   : index
-    Created on : Aug 16, 2015, 11:28:16 PM
+    Document   : cart.jsp
+    Created on : Aug 23, 2015, 11:43:57 AM
     Author     : hainam1421
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="description" content="">
         <meta name="author" content="">
-        <title>Home | E-Shopper</title>
+        <title>Cart | E-Shopper</title>
         <link href="css/bootstrap.min.css" rel="stylesheet">
         <link href="css/font-awesome.min.css" rel="stylesheet">
         <link href="css/prettyPhoto.css" rel="stylesheet">
@@ -29,7 +29,7 @@
         <link rel="apple-touch-icon-precomposed" sizes="114x114" href="images/ico/apple-touch-icon-114-precomposed.png">
         <link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/ico/apple-touch-icon-72-precomposed.png">
         <link rel="apple-touch-icon-precomposed" href="images/ico/apple-touch-icon-57-precomposed.png">
-    </head>
+    </head><!--/head-->
 
     <body>
         <header id="header"><!--header-->
@@ -66,7 +66,7 @@
                 </div>
             </div><!--/header-middle-->
 
-            <div class="header-bottom"><!--header-bottom-->
+             <div class="header-bottom"><!--header-bottom-->
                 <div class="container">
                     <div class="row">
                         <div class="col-sm-9">
@@ -105,239 +105,185 @@
             </div><!--/header-bottom-->
         </header><!--/header-->
 
-        <section id="slider"><!--slider-->
+        <section id="cart_items">
             <div class="container">
+                <div class="breadcrumbs">
+                    <ol class="breadcrumb">
+                        <li><a href="#">Home</a></li>
+                        <li class="active">Shopping Cart</li>
+                    </ol>
+                </div>
+                <div class="table-responsive cart_info">
+                    <table class="table table-condensed">
+                        <thead>
+                            <tr class="cart_menu">
+                                <td class="image">Item</td>
+                                <td class="description"></td>
+                                <td class="price">Price</td>
+                                <td class="quantity">Quantity</td>
+                                <td class="total">Total</td>
+                                <td></td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="cart_product">
+                                    <a href=""><img src="images/cart/one.png" alt=""></a>
+                                </td>
+                                <td class="cart_description">
+                                    <h4><a href="">Colorblock Scuba</a></h4>
+                                    <p>Web ID: 1089772</p>
+                                </td>
+                                <td class="cart_price">
+                                    <p>$59</p>
+                                </td>
+                                <td class="cart_quantity">
+                                    <div class="cart_quantity_button">
+                                        <a class="cart_quantity_up" href=""> + </a>
+                                        <input class="cart_quantity_input" type="text" name="quantity" value="1" autocomplete="off" size="2">
+                                        <a class="cart_quantity_down" href=""> - </a>
+                                    </div>
+                                </td>
+                                <td class="cart_total">
+                                    <p class="cart_total_price">$59</p>
+                                </td>
+                                <td class="cart_delete">
+                                    <a class="cart_quantity_delete" href=""><i class="fa fa-times"></i></a>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td class="cart_product">
+                                    <a href=""><img src="images/cart/two.png" alt=""></a>
+                                </td>
+                                <td class="cart_description">
+                                    <h4><a href="">Colorblock Scuba</a></h4>
+                                    <p>Web ID: 1089772</p>
+                                </td>
+                                <td class="cart_price">
+                                    <p>$59</p>
+                                </td>
+                                <td class="cart_quantity">
+                                    <div class="cart_quantity_button">
+                                        <a class="cart_quantity_up" href=""> + </a>
+                                        <input class="cart_quantity_input" type="text" name="quantity" value="1" autocomplete="off" size="2">
+                                        <a class="cart_quantity_down" href=""> - </a>
+                                    </div>
+                                </td>
+                                <td class="cart_total">
+                                    <p class="cart_total_price">$59</p>
+                                </td>
+                                <td class="cart_delete">
+                                    <a class="cart_quantity_delete" href=""><i class="fa fa-times"></i></a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="cart_product">
+                                    <a href=""><img src="images/cart/three.png" alt=""></a>
+                                </td>
+                                <td class="cart_description">
+                                    <h4><a href="">Colorblock Scuba</a></h4>
+                                    <p>Web ID: 1089772</p>
+                                </td>
+                                <td class="cart_price">
+                                    <p>$59</p>
+                                </td>
+                                <td class="cart_quantity">
+                                    <div class="cart_quantity_button">
+                                        <a class="cart_quantity_up" href=""> + </a>
+                                        <input class="cart_quantity_input" type="text" name="quantity" value="1" autocomplete="off" size="2">
+                                        <a class="cart_quantity_down" href=""> - </a>
+                                    </div>
+                                </td>
+                                <td class="cart_total">
+                                    <p class="cart_total_price">$59</p>
+                                </td>
+                                <td class="cart_delete">
+                                    <a class="cart_quantity_delete" href=""><i class="fa fa-times"></i></a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section> <!--/#cart_items-->
+
+        <section id="do_action">
+            <div class="container">
+                <div class="heading">
+                    <h3>What would you like to do next?</h3>
+                    <p>Choose if you have a discount code or reward points you want to use or would like to estimate your delivery cost.</p>
+                </div>
                 <div class="row">
-                    <div class="col-sm-12">
-                        <div id="slider-carousel" class="carousel slide" data-ride="carousel">
-                            <ol class="carousel-indicators">
-                                <li data-target="#slider-carousel" data-slide-to="0" class="active"></li>
-                                <li data-target="#slider-carousel" data-slide-to="1"></li>
-                            </ol>
+                    <div class="col-sm-6">
+                        <div class="chose_area">
+                            <ul class="user_option">
+                                <li>
+                                    <input type="checkbox">
+                                    <label>Use Coupon Code</label>
+                                </li>
+                                <li>
+                                    <input type="checkbox">
+                                    <label>Use Gift Voucher</label>
+                                </li>
+                                <li>
+                                    <input type="checkbox">
+                                    <label>Estimate Shipping & Taxes</label>
+                                </li>
+                            </ul>
+                            <ul class="user_info">
+                                <li class="single_field">
+                                    <label>Country:</label>
+                                    <select>
+                                        <option>United States</option>
+                                        <option>Bangladesh</option>
+                                        <option>UK</option>
+                                        <option>India</option>
+                                        <option>Pakistan</option>
+                                        <option>Ucrane</option>
+                                        <option>Canada</option>
+                                        <option>Dubai</option>
+                                    </select>
 
-                            <div class="carousel-inner">
-                             
-                                <div class="item active">
-                                   
-                                    <div class="col-sm-12">
-                                        <img src="images/home/film-banner.jpg" class="girl img-responsive" alt="" />
-                                    </div>
-                                </div>
+                                </li>
+                                <li class="single_field">
+                                    <label>Region / State:</label>
+                                    <select>
+                                        <option>Select</option>
+                                        <option>Dhaka</option>
+                                        <option>London</option>
+                                        <option>Dillih</option>
+                                        <option>Lahore</option>
+                                        <option>Alaska</option>
+                                        <option>Canada</option>
+                                        <option>Dubai</option>
+                                    </select>
 
-                                <div class="item">
-                                   
-                                    <div class="col-sm-12">
-                                        <img src="images/home/wu3ytu69n3p6gqfah7p7.jpg" class="girl img-responsive" alt="" />
-                                    </div>
-                                </div>
-
-                            </div>
-
-                            <a href="#slider-carousel" class="left control-carousel hidden-xs" data-slide="prev">
-                                <i class="fa fa-angle-left"></i>
-                            </a>
-                            <a href="#slider-carousel" class="right control-carousel hidden-xs" data-slide="next">
-                                <i class="fa fa-angle-right"></i>
-                            </a>
+                                </li>
+                                <li class="single_field zip-field">
+                                    <label>Zip Code:</label>
+                                    <input type="text">
+                                </li>
+                            </ul>
+                            <a class="btn btn-default update" href="">Get Quotes</a>
+                            <a class="btn btn-default check_out" href="">Continue</a>
                         </div>
-
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="total_area">
+                            <ul>
+                                <li>Cart Sub Total <span>$59</span></li>
+                                <li>Eco Tax <span>$2</span></li>
+                                <li>Shipping Cost <span>Free</span></li>
+                                <li>Total <span>$61</span></li>
+                            </ul>
+                            <a class="btn btn-default update" href="">Update</a>
+                            <a class="btn btn-default check_out" href="">Check Out</a>
+                        </div>
                     </div>
                 </div>
             </div>
-        </section><!--/slider-->
-
-        <section>
-            <div class="container">
-                <div class="row">
-                    <div class="col-sm-3">
-                        <div class="left-sidebar">
-                            <h2>Category</h2>
-                            <div class="panel-group category-products" id="accordian"><!--category-productsr-->
-                               
-                                <div class="panel panel-default">
-                                    <div class="panel-heading">
-                                        <h4 class="panel-title"><a href="#">Kids</a></h4>
-                                    </div>
-                                </div>
-                                <div class="panel panel-default">
-                                    <div class="panel-heading">
-                                        <h4 class="panel-title"><a href="#">Fashion</a></h4>
-                                    </div>
-                                </div>
-                                <div class="panel panel-default">
-                                    <div class="panel-heading">
-                                        <h4 class="panel-title"><a href="#">Households</a></h4>
-                                    </div>
-                                </div>
-                                <div class="panel panel-default">
-                                    <div class="panel-heading">
-                                        <h4 class="panel-title"><a href="#">Interiors</a></h4>
-                                    </div>
-                                </div>
-                                <div class="panel panel-default">
-                                    <div class="panel-heading">
-                                        <h4 class="panel-title"><a href="#">Clothing</a></h4>
-                                    </div>
-                                </div>
-                                <div class="panel panel-default">
-                                    <div class="panel-heading">
-                                        <h4 class="panel-title"><a href="#">Bags</a></h4>
-                                    </div>
-                                </div>
-                                <div class="panel panel-default">
-                                    <div class="panel-heading">
-                                        <h4 class="panel-title"><a href="#">Shoes</a></h4>
-                                    </div>
-                                </div>
-                            </div><!--/category-products-->
-
-
-
-
-
-                            <div class="shipping text-center"><!--shipping-->
-                                <img src="images/home/shipping.jpg" alt="" />
-                            </div><!--/shipping-->
-
-                        </div>
-                    </div>
-
-                    <div class="col-sm-9 padding-right">
-                        <div class="features_items"><!--features_items-->
-                            <h2 class="title text-center">PRODUCTS</h2>
-                            <div class="col-sm-4">
-                                <div class="product-image-wrapper">
-                                    <div class="single-products">
-                                        <div class="productinfo text-center">
-                                            <img src="images/home/product1.jpg" alt="" />
-                                            <h2>$56</h2>
-                                            <p>Easy Polo Black Edition</p>
-                                            <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-                                        </div>
-                                        <div class="product-overlay">
-                                            <div class="overlay-content">
-                                                <h2>$56</h2>
-                                                <p>Easy Polo Black Edition</p>
-                                                <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                   
-                                </div>
-                            </div>
-                            <div class="col-sm-4">
-                                <div class="product-image-wrapper">
-                                    <div class="single-products">
-                                        <div class="productinfo text-center">
-                                            <img src="images/home/product2.jpg" alt="" />
-                                            <h2>$56</h2>
-                                            <p>Easy Polo Black Edition</p>
-                                            <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-                                        </div>
-                                        <div class="product-overlay">
-                                            <div class="overlay-content">
-                                                <h2>$56</h2>
-                                                <p>Easy Polo Black Edition</p>
-                                                <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    
-                                </div>
-                            </div>
-                            <div class="col-sm-4">
-                                <div class="product-image-wrapper">
-                                    <div class="single-products">
-                                        <div class="productinfo text-center">
-                                            <img src="images/home/product3.jpg" alt="" />
-                                            <h2>$56</h2>
-                                            <p>Easy Polo Black Edition</p>
-                                            <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-                                        </div>
-                                        <div class="product-overlay">
-                                            <div class="overlay-content">
-                                                <h2>$56</h2>
-                                                <p>Easy Polo Black Edition</p>
-                                                <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    
-                                </div>
-                            </div>
-                            <div class="col-sm-4">
-                                <div class="product-image-wrapper">
-                                    <div class="single-products">
-                                        <div class="productinfo text-center">
-                                            <img src="images/home/product4.jpg" alt="" />
-                                            <h2>$56</h2>
-                                            <p>Easy Polo Black Edition</p>
-                                            <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-                                        </div>
-                                        <div class="product-overlay">
-                                            <div class="overlay-content">
-                                                <h2>$56</h2>
-                                                <p>Easy Polo Black Edition</p>
-                                                <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-                                            </div>
-                                        </div>
-                                        <img src="images/home/new.png" class="new" alt="" />
-                                    </div>
-                                    
-                                </div>
-                            </div>
-                            <div class="col-sm-4">
-                                <div class="product-image-wrapper">
-                                    <div class="single-products">
-                                        <div class="productinfo text-center">
-                                            <img src="images/home/product5.jpg" alt="" />
-                                            <h2>$56</h2>
-                                            <p>Easy Polo Black Edition</p>
-                                            <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-                                        </div>
-                                        <div class="product-overlay">
-                                            <div class="overlay-content">
-                                                <h2>$56</h2>
-                                                <p>Easy Polo Black Edition</p>
-                                                <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-                                            </div>
-                                        </div>
-                                        <img src="images/home/sale.png" class="new" alt="" />
-                                    </div>
-                                   
-                                </div>
-                            </div>
-                            <div class="col-sm-4">
-                                <div class="product-image-wrapper">
-                                    <div class="single-products">
-                                        <div class="productinfo text-center">
-                                            <img src="images/home/product6.jpg" alt="" />
-                                            <h2>$56</h2>
-                                            <p>Easy Polo Black Edition</p>
-                                            <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-                                        </div>
-                                        <div class="product-overlay">
-                                            <div class="overlay-content">
-                                                <h2>$56</h2>
-                                                <p>Easy Polo Black Edition</p>
-                                                <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                   
-                                </div>
-                            </div>
-
-                        </div><!--features_items-->
-
-
-
-
-
-                    </div>
-                </div>
-            </div>
-        </section>
+        </section><!--/#do_action-->
 
         <footer id="footer"><!--Footer-->
             <div class="footer-top">
@@ -502,7 +448,7 @@
         <script src="js/jquery.js"></script>
         <script src="js/bootstrap.min.js"></script>
         <script src="js/jquery.scrollUp.min.js"></script>
-        <script src="js/price-range.js"></script>
         <script src="js/jquery.prettyPhoto.js"></script>
         <script src="js/main.js"></script>
-    </body></html>
+    </body>
+</html>
