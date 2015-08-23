@@ -16,6 +16,7 @@ public class Products {
     float monney;
     String description;
     String url;
+    String img;
     int rank;
     boolean active;
     int c_id;
@@ -59,6 +60,15 @@ public class Products {
     public void setUrl(String url) {
         this.url = url;
     }
+
+    public String getImg() {
+        return img;
+    }
+
+    public void setImg(String img) {
+        this.img = img;
+    }
+    
 
     public int getRank() {
         return rank;
