@@ -49,13 +49,15 @@ public class UserDetail {
         this.address = address;
     }
 
-    public String isBod() {
+    public String getBod() {
         return bod;
     }
 
     public void setBod(String bod) {
         this.bod = bod;
     }
+
+    
 
     public String getPhone() {
         return phone;

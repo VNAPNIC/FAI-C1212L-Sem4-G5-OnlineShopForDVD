@@ -47,6 +47,30 @@ public class UserDetailModel extends DataAccessHelper{
         }
         return item;
     }
-    
+   
+    public boolean Register(UserDetail ud){
+         boolean check = false;
+        try {
+            con = getConnection();
+            if (con != null) {
+                PreparedStatement ps = con.prepareStatement(REGISTER);
+                ps.setString(1, ud.getName());
+                ps.setString(2, ud.getAddress());
+                ps.setString(3, ud.getBod());
+                ps.setString(4, ud.getPhone());
+                ps.setString(5, ud.getEmail());
+                ps.setInt(6, ud.getIdentity_card());
+                ps.setString(7,ud.getUser());
+                int rs = ps.executeUpdate();
+                if (rs > 0) {
+                    check = true;
+                }
+            }
+            getClose();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return check;
+    }
    
 }

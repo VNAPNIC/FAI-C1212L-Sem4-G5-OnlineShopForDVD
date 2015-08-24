@@ -5,6 +5,8 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib prefix="s" uri="/struts-tags" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -33,85 +35,94 @@
 
     <body>
         <header id="header"><!--header-->
-		<div class="header_top"><!--header_top-->
-			<div class="container">
-				<div class="row">
-					<div class="col-sm-6">
-						<div class="contactinfo">
-							<ul class="nav nav-pills">
-								<li><a href="#"><i class="fa fa-phone"></i> +84 963190925</a></li>
-								<li><a href="#"><i class="fa fa-envelope"></i> nambh_a05320@fpt.aptech.ac.vn</a></li>
-							</ul>
-						</div>
-					</div>
-					<div class="col-sm-6">
-						<div class="social-icons pull-right">
-							<ul class="nav navbar-nav">
-								<li><a href="#"><i class="fa fa-facebook"></i></a></li>
-								<li><a href="#"><i class="fa fa-twitter"></i></a></li>
-								<li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-								<li><a href="#"><i class="fa fa-dribbble"></i></a></li>
-								<li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-							</ul>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div><!--/header_top-->
-		
-		<div class="header-middle"><!--header-middle-->
-			<div class="container">
-				<div class="row">
-					<div class="col-sm-2">
-						<div class="logo pull-left">
-							<div class="companyinfo">
-							<h2><span>e</span>-shopper</h2>
-						
-						</div>
-						</div>
-					</div>
-					<div class="col-sm-11">
-						<div class="shop-menu pull-right">
-							<ul class="nav navbar-nav">
-								<li><a href="#"><i class="fa fa-user"></i> Account</a></li>
-								<li><a href="checkout.jsp"><i class="fa fa-crosshairs"></i> Checkout</a></li>
-								<li><a href="cart.jsp"><i class="fa fa-shopping-cart"></i> Cart</a></li>
-								<li><a href="login.jsp"><i class="fa fa-lock"></i> Login</a></li>
-							</ul>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div><!--/header-middle-->
-	
-		<div class="header-bottom"><!--header-bottom-->
-			<div class="container">
-				<div class="row">
-					<div class="col-sm-9">
-						<div class="navbar-header">
-							<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-								<span class="sr-only">Toggle navigation</span>
-								<span class="icon-bar"></span>
-								<span class="icon-bar"></span>
-								<span class="icon-bar"></span>
-							</button>
-						</div>
-						<div class="mainmenu pull-left">
-							<ul class="nav navbar-nav collapse navbar-collapse">
-								<li><a href="index.jsp" class="active">Home</a></li>
-								<li><a href="contact-us.jsp">Contact</a></li>
-							</ul>
-						</div>
-					</div>
-					<div class="col-sm-3">
-						<div class="search_box pull-right">
-							<input type="text" placeholder="Search"/>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div><!--/header-bottom-->
-	</header><!--/header-->
+            <div class="header_top"><!--header_top-->
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="contactinfo">
+                                <ul class="nav nav-pills">
+                                    <li><a href="#"><i class="fa fa-phone"></i> +84 963190925</a></li>
+                                    <li><a href="#"><i class="fa fa-envelope"></i> nambh_a05320@fpt.aptech.ac.vn</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="social-icons pull-right">
+                                <ul class="nav navbar-nav">
+                                    <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div><!--/header_top-->
+
+            <div class="header-middle"><!--header-middle-->
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-2">
+                            <div class="logo pull-left">
+                                <div class="companyinfo">
+                                    <h2><span>e</span>-shopper</h2>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-11">
+                            <div class="shop-menu pull-right">
+                                <ul class="nav navbar-nav">
+                                    <li><a href="#"><i class="fa fa-user"></i> Account</a></li>
+                                    <li><a href="checkout.jsp"><i class="fa fa-crosshairs"></i> Checkout</a></li>
+                                    <li><a href="cart.jsp"><i class="fa fa-shopping-cart"></i> Cart</a></li>
+
+                                    <c:choose> 
+                                        <c:when test="${!empty sessionScope['login']}">
+                                            <li>Hello: ${sessionScope.login}</li>
+                                            </c:when>
+                                            <c:otherwise>
+                                            <li><a href="login.jsp"><i class="fa fa-lock"></i> Login</a></li>
+                                        </c:otherwise>
+                                    </c:choose>
+                                    
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div><!--/header-middle-->
+
+            <div class="header-bottom"><!--header-bottom-->
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-9">
+                            <div class="navbar-header">
+                                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                                    <span class="sr-only">Toggle navigation</span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                </button>
+                            </div>
+                            <div class="mainmenu pull-left">
+                                <ul class="nav navbar-nav collapse navbar-collapse">
+                                    <li><a href="index.jsp" class="active">Home</a></li>
+                                    <li><a href="contact-us.jsp">Contact</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="search_box pull-right">
+                                <input type="text" placeholder="Search"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div><!--/header-bottom-->
+        </header><!--/header-->
 
         <section id="slider"><!--slider-->
             <div class="container">
@@ -124,16 +135,16 @@
                             </ol>
 
                             <div class="carousel-inner">
-                             
+
                                 <div class="item active">
-                                   
+
                                     <div class="col-sm-12">
                                         <img src="images/home/film-banner.jpg" class="girl img-responsive" alt="" />
                                     </div>
                                 </div>
 
                                 <div class="item">
-                                   
+
                                     <div class="col-sm-12">
                                         <img src="images/home/wu3ytu69n3p6gqfah7p7.jpg" class="girl img-responsive" alt="" />
                                     </div>
@@ -161,7 +172,7 @@
                         <div class="left-sidebar">
                             <h2>Category</h2>
                             <div class="panel-group category-products" id="accordian"><!--category-productsr-->
-                               
+
                                 <div class="panel panel-default">
                                     <div class="panel-heading">
                                         <h4 class="panel-title"><a href="#">Kids</a></h4>
@@ -230,7 +241,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                   
+
                                 </div>
                             </div>
                             <div class="col-sm-4">
@@ -250,7 +261,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    
+
                                 </div>
                             </div>
                             <div class="col-sm-4">
@@ -270,7 +281,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    
+
                                 </div>
                             </div>
                             <div class="col-sm-4">
@@ -291,7 +302,7 @@
                                         </div>
                                         <img src="images/home/new.png" class="new" alt="" />
                                     </div>
-                                    
+
                                 </div>
                             </div>
                             <div class="col-sm-4">
@@ -312,7 +323,7 @@
                                         </div>
                                         <img src="images/home/sale.png" class="new" alt="" />
                                     </div>
-                                   
+
                                 </div>
                             </div>
                             <div class="col-sm-4">
@@ -332,7 +343,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                   
+
                                 </div>
                             </div>
 
