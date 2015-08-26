@@ -68,7 +68,7 @@
                             <div class="logo pull-left">
                                 <div class="companyinfo">
                                     <h2><span>e</span>-shopper</h2>
-
+                                            
                                 </div>
                             </div>
                         </div>

@@ -48,7 +48,7 @@ public class UserDetailModel extends DataAccessHelper{
         return item;
     }
    
-    public boolean Register(UserDetail ud){
+    public boolean Register(UserDetail ud,String u){
          boolean check = false;
         try {
             con = getConnection();
@@ -60,7 +60,7 @@ public class UserDetailModel extends DataAccessHelper{
                 ps.setString(4, ud.getPhone());
                 ps.setString(5, ud.getEmail());
                 ps.setInt(6, ud.getIdentity_card());
-                ps.setString(7,ud.getUser());
+                ps.setString(7,u);
                 int rs = ps.executeUpdate();
                 if (rs > 0) {
                     check = true;

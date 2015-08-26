@@ -81,7 +81,7 @@
 
                                     <c:choose> 
                                         <c:when test="${!empty sessionScope['login']}">
-                                            <li>Hello: ${sessionScope.login}</li>
+                                            <li><a href="#">Hello: ${sessionScope.login} </a></li>
                                             </c:when>
                                             <c:otherwise>
                                             <li><a href="login.jsp"><i class="fa fa-lock"></i> Login</a></li>

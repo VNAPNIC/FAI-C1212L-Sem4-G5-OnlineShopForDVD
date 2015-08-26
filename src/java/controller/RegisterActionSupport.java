@@ -17,15 +17,53 @@ import model.UserDetailModel;
  */
 public class RegisterActionSupport extends ActionSupport {
 
-    Login l = new Login();
+    String user;
+    String pass;
+    String identityCard;
+    String rs;
+    String error;
     UserDetail ud = new UserDetail();
 
-    public Login getL() {
-        return l;
+    public String getError() {
+        return error;
     }
 
-    public void setL(Login l) {
-        this.l = l;
+    public void setError(String error) {
+        this.error = error;
+    }
+
+    
+    
+    public String getRs() {
+        return rs;
+    }
+
+    public void setRs(String rs) {
+        this.rs = rs;
+    }
+
+    public String getUser() {
+        return user;
+    }
+
+    public void setUser(String user) {
+        this.user = user;
+    }
+
+    public String getIdentityCard() {
+        return identityCard;
+    }
+
+    public void setIdentityCard(String identityCard) {
+        this.identityCard = identityCard;
+    }
+
+    public String getPass() {
+        return pass;
+    }
+
+    public void setPass(String pass) {
+        this.pass = pass;
     }
 
     public UserDetail getUd() {
@@ -39,24 +77,38 @@ public class RegisterActionSupport extends ActionSupport {
     public RegisterActionSupport() {
     }
 
+    public String registerud() throws Exception {
+        LoginModel lm = new LoginModel();
+        UserDetailModel udm = new UserDetailModel();
+        String u = lm.getTop1();
+        ud.setIdentity_card(Integer.valueOf(identityCard.toString().trim()));
+        if (udm.Register(ud, u)) {
+            rs = "success";
+            error = "Register success.!";
+            return SUCCESS;
+        } else {
+            rs = "fail";
+            error = "sorry faulty system can not register.!";
+            return INPUT;
+        }
+    }
+
     @Override
     public String execute() throws Exception {
         LoginModel lm = new LoginModel();
-        UserDetailModel udm = new UserDetailModel();
-        
-        l.setActive(true);
-        l.setStatus(false);
-        l.setRu_id(3);
-        
-       if(lm.Register(l)){
-           ud.setUser(lm.getTop1());
-           if(udm.Register(ud)){
-               return SUCCESS;
-           }
-       }else{
-           return INPUT;
-       }
-       return INPUT;
+        if(lm.getUser(rs)){
+          error = "account already exists in the system can not be used.!";
+          return INPUT;  
+        }
+        if (lm.Register(user, pass)) {
+            String u = lm.getTop1();
+            rs = "success";
+            return SUCCESS;
+        } else {
+            rs = "fail";
+            error = "sorry faulty system can not register.!";
+            return INPUT;
+        }
     }
 
 }

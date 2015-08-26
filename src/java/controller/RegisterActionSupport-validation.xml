@@ -1,13 +1,13 @@
 <!DOCTYPE validators PUBLIC "-//Apache Struts//XWork Validator 1.0.3//EN"
         "http://struts.apache.org/dtds/xwork-validator-1.0.3.dtd">
 <validators>
-    <field name="l.user">
+    <field name="user">
         <field-validator type="requiredstring">
             <message>You must enter User</message>
         </field-validator>
     </field>
      
-    <field name="l.pass">
+    <field name="pass">
         <field-validator type="requiredstring">
             <message>You must enter password</message>
         </field-validator>
@@ -38,7 +38,7 @@
             <message>You must enter Birth day</message>
         </field-validator>
     </field>
-    <field name="ud.identity_card">
+    <field name="identityCard">
         <field-validator type="requiredstring">
             <message>You must enter ud.identity card</message>
         </field-validator>

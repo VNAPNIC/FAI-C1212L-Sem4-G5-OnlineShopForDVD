@@ -21,9 +21,10 @@ public class LoginModel extends DataAccessHelper {
 
     Connection con;
     private static final String CHECK_LOGIN = "select * from [Login] where [user] =? and [password]=? and ru_id =?";
+    private static final String GET_USER_LOGIN = "select * from [Login] where [user] =?";
     private static final String GET_PROFILE = "select * from [Login]";
     private static final String REGISTER = "insert into [Login] values (?,?,?,?,?)";
-    private static final String GET_TOP_1 = "SELECT TOP(1) PERCENT * FROM  [Login] ORDER  by ru_id DESC";
+    private static final String GET_TOP_1 = "SELECT TOP(1) PERCENT * FROM  [Login] ORDER  by number DESC";
 
     public Login checkLogin(String user, String pass, int rela) {
         Login l = new Login();
@@ -51,6 +52,25 @@ public class LoginModel extends DataAccessHelper {
         return l;
     }
     
+    
+    public boolean getUser(String u){
+        boolean check = false;
+        try {
+            con = getConnection();
+            if(con !=null){
+                PreparedStatement ps = con.prepareStatement(GET_USER_LOGIN);
+                ps.setString(1, u);
+                ResultSet  rs = ps.executeQuery();
+                if(rs.next()){
+                    check = true;
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return check;
+    }
+    
     public String getTop1(){
         String top = "";
         try {
@@ -68,17 +88,17 @@ public class LoginModel extends DataAccessHelper {
         return top;
     }
 
-    public boolean Register(Login l) {
+    public boolean Register(String u,String p) {
         boolean check = false;
         try {
             con = getConnection();
             if (con != null) {
                 PreparedStatement ps = con.prepareStatement(REGISTER);
-                ps.setString(1, l.getUser());
-                ps.setString(2, l.getPass());
-                ps.setBoolean(3, l.isStatus());
-                ps.setInt(4, l.getRu_id());
-                ps.setBoolean(5, l.isActive());
+                ps.setString(1, u);
+                ps.setString(2, p);
+                ps.setBoolean(3, false);
+                ps.setInt(4, 3);
+                ps.setBoolean(5, true);
                 int rs = ps.executeUpdate();
                 if (rs > 0) {
                     check = true;
