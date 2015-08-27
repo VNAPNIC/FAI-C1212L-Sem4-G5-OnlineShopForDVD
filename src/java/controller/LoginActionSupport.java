@@ -40,6 +40,11 @@ public class LoginActionSupport extends ActionSupport implements SessionAware {
 
     public LoginActionSupport() {
     }
+    
+     public String logout() throws Exception{
+        sessionMap.remove("login");
+        return SUCCESS;
+    }
 
     @Override
     public String execute() throws Exception {

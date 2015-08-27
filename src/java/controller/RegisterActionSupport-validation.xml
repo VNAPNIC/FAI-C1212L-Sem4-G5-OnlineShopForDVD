@@ -1,46 +1,15 @@
 <!DOCTYPE validators PUBLIC "-//Apache Struts//XWork Validator 1.0.3//EN"
         "http://struts.apache.org/dtds/xwork-validator-1.0.3.dtd">
 <validators>
-    <field name="user">
+    <field name="ruser">
         <field-validator type="requiredstring">
             <message>You must enter User</message>
         </field-validator>
     </field>
      
-    <field name="pass">
+    <field name="rpass">
         <field-validator type="requiredstring">
             <message>You must enter password</message>
-        </field-validator>
-    </field>
-    
-    <field name="ud.name">
-        <field-validator type="requiredstring">
-            <message>You must enter name</message>
-        </field-validator>
-    </field>
-    <field name="ud.address">
-        <field-validator type="requiredstring">
-            <message>You must enter address</message>
-        </field-validator>
-    </field>
-    <field name="ud.phone">
-        <field-validator type="requiredstring">
-            <message>You must enter phone</message>
-        </field-validator>
-    </field>
-    <field name="ud.email">
-        <field-validator type="requiredstring">
-            <message>You must enter email</message>
-        </field-validator>
-    </field>
-    <field name="ud.bod">
-        <field-validator type="requiredstring">
-            <message>You must enter Birth day</message>
-        </field-validator>
-    </field>
-    <field name="identityCard">
-        <field-validator type="requiredstring">
-            <message>You must enter ud.identity card</message>
         </field-validator>
     </field>
 </validators>

@@ -1,6 +1,6 @@
 <%-- 
-    Document   : login.jsp
-    Created on : Aug 23, 2015, 11:41:48 AM
+    Document   : register
+    Created on : Aug 26, 2015, 2:40:49 PM
     Author     : hainam1421
 --%>
 
@@ -72,48 +72,49 @@
                 </div>
             </div><!--/header-middle-->
         </header><!--/header-->
-        <section>
-            <div class="wrapper">
-                <div class="container">
-                    <h1>SIGN IN</h1>
-                    <Center>
+        <section></section>
+        <div class="wrapper">
+            <div class="container">
+                <h1>Detail</h1>
+                <Center>
 
-                        <s:form cssClass="form" action="login" method="Post">
-                            <table>
-                                <td><tr><s:textfield name="l.user" placeholder="Username"></s:textfield></tr></td>
-                                <td><tr><s:password name="l.pass" placeholder="Password"></s:password></tr></td>
-                                <td><tr> <s:submit id="login-button"  value="Sign in" ></s:submit></tr></td>
-                        <td><tr><label>Don't have an account &nbsp;</label> <a  href="register.jsp">Sign Up</a></tr></td>
-                                    <td><tr><s:label name="error"></s:label></tr></td>
-                                </table>
-                        </s:form>
-                    </Center>
+                    <s:form cssClass="form" action="rsuser" method="Post">
+                        <table>
+                            <td><tr><s:textfield name="ud.name" placeholder="Name"></s:textfield></tr></td>
+                            <td><tr><s:textfield name="ud.address" placeholder="Address"></s:textfield></tr></td>
+                            <td><tr><s:textfield name="ud.phone" type="number" placeholder="Phone"></s:textfield></tr></td>
+                            <td><tr><s:textfield name="ud.email" placeholder="Email"></s:textfield></tr></td>
+                            <td><tr><s:textfield name="ud.bod" type="date"></s:textfield></tr></td>
+                            <td><tr><s:textfield name="identityCard"  placeholder="Identity Card"></s:textfield></tr></td>
+                            <td><tr> <s:submit id="login-button"  value="Sign up" ></s:submit></tr></td>
+                            <td><tr><s:label name="error"></s:label></tr></td>
+                            </table>
+                    </s:form>
+                </Center>
 
-                </div>
-
-                <ul class="bg-bubbles">
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                </ul>
             </div>
-        </section>
-        
+
+            <ul class="bg-bubbles">
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+        </div>
+    </section>
+    <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+
+    <script src="js/index.js"></script>
 
 
-        <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
-
-        <script src="js/index.js"></script>
 
 
-
-
-    </body>
+</body>
 </html>
+

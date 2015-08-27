@@ -17,97 +17,47 @@ import model.UserDetailModel;
  */
 public class RegisterActionSupport extends ActionSupport {
 
-    String user;
-    String pass;
-    String identityCard;
-    String rs;
-    String error;
-    UserDetail ud = new UserDetail();
+    String ruser;
+    String rpass;
+    String rerror;
 
-    public String getError() {
-        return error;
+    public String getRerror() {
+        return rerror;
     }
 
-    public void setError(String error) {
-        this.error = error;
+    public void setRerror(String rerror) {
+        this.rerror = rerror;
     }
 
-    
-    
-    public String getRs() {
-        return rs;
+    public String getRuser() {
+        return ruser;
     }
 
-    public void setRs(String rs) {
-        this.rs = rs;
+    public void setRuser(String ruser) {
+        this.ruser = ruser;
     }
 
-    public String getUser() {
-        return user;
+    public String getRpass() {
+        return rpass;
     }
 
-    public void setUser(String user) {
-        this.user = user;
-    }
-
-    public String getIdentityCard() {
-        return identityCard;
-    }
-
-    public void setIdentityCard(String identityCard) {
-        this.identityCard = identityCard;
-    }
-
-    public String getPass() {
-        return pass;
-    }
-
-    public void setPass(String pass) {
-        this.pass = pass;
-    }
-
-    public UserDetail getUd() {
-        return ud;
-    }
-
-    public void setUd(UserDetail ud) {
-        this.ud = ud;
-    }
-
-    public RegisterActionSupport() {
-    }
-
-    public String registerud() throws Exception {
-        LoginModel lm = new LoginModel();
-        UserDetailModel udm = new UserDetailModel();
-        String u = lm.getTop1();
-        ud.setIdentity_card(Integer.valueOf(identityCard.toString().trim()));
-        if (udm.Register(ud, u)) {
-            rs = "success";
-            error = "Register success.!";
-            return SUCCESS;
-        } else {
-            rs = "fail";
-            error = "sorry faulty system can not register.!";
-            return INPUT;
-        }
+    public void setRpass(String rpass) {
+        this.rpass = rpass;
     }
 
     @Override
     public String execute() throws Exception {
         LoginModel lm = new LoginModel();
-        if(lm.getUser(rs)){
-          error = "account already exists in the system can not be used.!";
-          return INPUT;  
-        }
-        if (lm.Register(user, pass)) {
-            String u = lm.getTop1();
-            rs = "success";
-            return SUCCESS;
-        } else {
-            rs = "fail";
-            error = "sorry faulty system can not register.!";
+        if (lm.getUser(getRuser())) {
+            setRerror("account already exists in the system can not be used.!");
             return INPUT;
+        } else {
+            if (lm.Register(getRuser(), getRpass())) {
+                return SUCCESS;
+            } else {
+                setRerror("sorry faulty system can not register.!");
+                return INPUT;
+            }
         }
     }
 

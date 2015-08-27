@@ -9,12 +9,17 @@
             <result name="success">/index.jsp</result>
             <result name="input">/login.jsp</result>
         </action>
-        <action name="rsl" class="controller.RegisterActionSupport">
-            <result name="success">/register.jsp</result>
+        
+        <action name="logout" class="controller.LogOutActionSupport">
+            <result name="success">/index.jsp</result>
+        </action>
+        
+        <action name="rslogin" class="controller.RegisterActionSupport">
+            <result name="success">/rsdetail.jsp</result>
             <result name="input">/register.jsp</result>
         </action>
-          <action name="rsud" class="controller.RegisterActionSupport" method="registerud">
-            <result name="success">/register.jsp</result>
+          <action name="rsuser" class="controller.RegisterUserActionSupport">
+            <result name="success">/login.jsp</result>
             <result name="input">/register.jsp</result>
         </action>
     </package>
