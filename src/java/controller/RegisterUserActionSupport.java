@@ -21,7 +21,7 @@ public class RegisterUserActionSupport extends ActionSupport {
     UserDetail ud = new UserDetail();
     String identityCard;
     String rs;
-    String error;
+    String rdterror;
 
     public UserDetail getUd() {
         return ud;
@@ -47,13 +47,15 @@ public class RegisterUserActionSupport extends ActionSupport {
         this.rs = rs;
     }
 
-    public String getError() {
-        return error;
+    public String getRdterror() {
+        return rdterror;
     }
 
-    public void setError(String error) {
-        this.error = error;
+    public void setRdterror(String rdterror) {
+        this.rdterror = rdterror;
     }
+
+   
 
     public RegisterUserActionSupport() {
     }
@@ -65,9 +67,12 @@ public class RegisterUserActionSupport extends ActionSupport {
         String u = lm.getTop1();
         ud.setIdentity_card(Integer.valueOf(identityCard.toString().trim()));
         if (udm.Register(ud, u)) {
+            setRdterror("Register Detail Success.!");
+            setRs("success");
             return SUCCESS;
         } else {
-            error = "sorry faulty system can not register.!";
+            setRdterror("Register Detail fail.!");
+            setRs("fail");
             return INPUT;
         }
     }

@@ -19,8 +19,8 @@
             <result name="input">/register.jsp</result>
         </action>
           <action name="rsuser" class="controller.RegisterUserActionSupport">
-            <result name="success">/login.jsp</result>
-            <result name="input">/register.jsp</result>
+            <result name="success">/rsdetail.jsp</result>
+            <result name="input">/rsdetail.jsp</result>
         </action>
     </package>
 </struts>

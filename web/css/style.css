@@ -59,7 +59,7 @@ body :-ms-input-placeholder {
           transform: translateY(85px);
 }
 .container {
-  max-width: 600px;
+  
   margin: 0 auto;
   text-align: center;
 }
@@ -94,6 +94,10 @@ form input {
   -webkit-transition-duration: 0.25s;
           transition-duration: 0.25s;
   font-weight: 300;
+}
+a{
+    color: #a6e1ec;
+    font-weight: bold;
 }
 form input:hover {
   background-color: rgba(255, 255, 255, 0.4);

@@ -1,8 +1,9 @@
 <%-- 
-    Document   : header
-    Created on : Aug 27, 2015, 4:24:16 PM
+    Document   : headerLR
+    Created on : Aug 27, 2015, 4:45:11 PM
     Author     : hainam1421
 --%>
+
 
 <header id="header"><!--header-->
     <div class="header_top"><!--header_top-->
@@ -47,57 +48,23 @@
                         <ul class="nav navbar-nav">
                             <li><a href="index.jsp" class="active"><i class="fa fa-home">Home</i></a></li>
                             <li><a href="contact-us.jsp"><i class="fa fa-comment">Contact</i></a></li>
-                            <li><a href="#"><i class="fa fa-user"></i> Account</a></li>
                             <li><a href="checkout.jsp"><i class="fa fa-crosshairs"></i> Checkout</a></li>
                             <li><a href="cart.jsp"><i class="fa fa-shopping-cart"></i> Cart</a></li>
 
                             <c:choose> 
                                 <c:when test="${!empty sessionScope['login']}">
-
-                                    <li ><a href="#"><i class="fa fa-user">&nbsp;Hello: ${sessionScope.login} </i> </a></li>
-                                    <li>
-                                    <s:url action="logout.action" var="urlTag" >
-                                    </s:url>
-                                    <s:a href="%{urlTag}"><i class="fa fa-unlock">&nbsp;Logout</i></s:a>
-                                    </li>
-
+                                    <li><%
+                                        response.sendRedirect("index.jsp");
+                                        %> </li>
                                 </c:when>
                                 <c:otherwise>
                                     <li><a href="login.jsp"><i class="fa fa-lock"></i> Login</a></li>
                                 </c:otherwise>
                             </c:choose>
-                            <li>  
-                                <div class="search_box pull-right">
-                                    <input type="text" placeholder="Search"/>
-                                </div>
-                            </li>
                         </ul>
                     </div>
                 </div>
             </div>
         </div>
     </div><!--/header-middle-->
-
-    <div class="header-bottom"><!--header-bottom-->
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-9">
-                    <div class="navbar-header">
-                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                            <span class="sr-only">Toggle navigation</span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                        </button>
-                    </div>
-                    <div class="mainmenu pull-left">
-                        <ul class="nav navbar-nav collapse navbar-collapse">
-
-                        </ul>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </div><!--/header-bottom-->
 </header><!--/header-->

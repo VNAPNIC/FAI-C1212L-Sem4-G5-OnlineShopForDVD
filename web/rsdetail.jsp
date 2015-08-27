@@ -35,86 +35,66 @@
     </head>
 
     <body>
-        <header id="header"><!--header-->
-            <div class="header-middle"><!--header-middle-->
+        <%@include file="headerLR.jsp" %>
+
+        <section>
+            <div class="wrapper">
                 <div class="container">
                     <div class="row">
-                        <div class="col-sm-4">
-                            <div class="logo pull-left">
-                                <div class="companyinfo">
-                                    <h2><span>Shop</span>-DVD</h2>
+                        <div class="col-sm-12">
+                            <h1>Register Detail</h1>
+                            <Center>
+                                <s:form cssClass="form" action="rsuser" method="Post">
+                                    <table>
+                                        <s:set name="webFramework" value="rs"/>
 
-                                </div>
-                            </div>
+                                        <s:if test="%{#webFramework=='success'}">
+                                            <td><tr><label>Successful registration &nbsp;</label> <a  href="login.jsp">Back login page</a> </tr></td>
+
+                                        </s:if>
+                                        <s:else>
+
+
+                                            <td><tr><s:textfield name="ud.name" placeholder="Name"></s:textfield></tr></td>
+                                            <td><tr><s:textfield name="ud.address" placeholder="Address"></s:textfield></tr></td>
+                                            <td><tr><s:textfield name="ud.phone" type="number" placeholder="Phone"></s:textfield></tr></td>
+                                            <td><tr><s:textfield name="ud.email" placeholder="Email"></s:textfield></tr></td>
+                                            <td><tr><s:textfield name="ud.bod" type="date"></s:textfield></tr></td>
+                                            <td><tr><s:textfield name="identityCard" type="number"  placeholder="Identity Card"></s:textfield></tr></td>
+                                            <td><tr> <s:submit id="login-button"  value="Sign up" ></s:submit></tr></td>
+                                            <td><tr><s:label name="rdterror"></s:label></tr></td>
+
+
+                                        </s:else>
+                                    </table>
+                                </s:form>
+                            </Center>
+
                         </div>
-                        <div class="col-sm-9">
-                            <div class="shop-menu pull-right">
-                                <ul class="nav navbar-nav">
-                                    <li><a href="#"><i class="fa fa-user"></i> Account</a></li>
-                                    <li><a href="checkout.jsp"><i class="fa fa-crosshairs"></i> Checkout</a></li>
-                                    <li><a href="cart.jsp"><i class="fa fa-shopping-cart"></i> Cart</a></li>
 
-                                    <c:choose> 
-                                        <c:when test="${!empty sessionScope['login']}">
-                                            <li><%
-                                                response.sendRedirect("index.jsp");
-                                                %> </li>
-                                            </c:when>
-                                            <c:otherwise>
-                                            <li><a href="login.jsp"><i class="fa fa-lock"></i> Login</a></li>
-                                            </c:otherwise>
-                                        </c:choose>
-
-                                </ul>
-                            </div>
-                        </div>
+                        <ul class="bg-bubbles">
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                        </ul>
                     </div>
                 </div>
-            </div><!--/header-middle-->
-        </header><!--/header-->
-        <section></section>
-        <div class="wrapper">
-            <div class="container">
-                <h1>Detail</h1>
-                <Center>
-
-                    <s:form cssClass="form" action="rsuser" method="Post">
-                        <table>
-                            <td><tr><s:textfield name="ud.name" placeholder="Name"></s:textfield></tr></td>
-                            <td><tr><s:textfield name="ud.address" placeholder="Address"></s:textfield></tr></td>
-                            <td><tr><s:textfield name="ud.phone" type="number" placeholder="Phone"></s:textfield></tr></td>
-                            <td><tr><s:textfield name="ud.email" placeholder="Email"></s:textfield></tr></td>
-                            <td><tr><s:textfield name="ud.bod" type="date"></s:textfield></tr></td>
-                            <td><tr><s:textfield name="identityCard"  placeholder="Identity Card"></s:textfield></tr></td>
-                            <td><tr> <s:submit id="login-button"  value="Sign up" ></s:submit></tr></td>
-                            <td><tr><s:label name="error"></s:label></tr></td>
-                            </table>
-                    </s:form>
-                </Center>
-
             </div>
+        </section>
+        <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
 
-            <ul class="bg-bubbles">
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-            </ul>
-        </div>
-    </section>
-    <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
-
-    <script src="js/index.js"></script>
+        <script src="js/index.js"></script>
 
 
 
 
-</body>
+    </body>
 </html>
 

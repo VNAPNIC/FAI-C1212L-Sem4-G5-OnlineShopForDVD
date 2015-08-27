@@ -35,77 +35,43 @@
     </head>
 
     <body>
-        <header id="header"><!--header-->
-            <div class="header-middle"><!--header-middle-->
-                <div class="container">
-                    <div class="row">
-                        <div class="col-sm-4">
-                            <div class="logo pull-left">
-                                <div class="companyinfo">
-                                    <h2><span>Shop</span>-DVD</h2>
-
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-9">
-                            <div class="shop-menu pull-right">
-                                <ul class="nav navbar-nav">
-                                    <li><a href="#"><i class="fa fa-user"></i> Account</a></li>
-                                    <li><a href="checkout.jsp"><i class="fa fa-crosshairs"></i> Checkout</a></li>
-                                    <li><a href="cart.jsp"><i class="fa fa-shopping-cart"></i> Cart</a></li>
-
-                                    <c:choose> 
-                                        <c:when test="${!empty sessionScope['login']}">
-                                            <li><%
-                                                response.sendRedirect("index.jsp");
-                                                %> </li>
-                                            </c:when>
-                                            <c:otherwise>
-                                            <li><a href="login.jsp"><i class="fa fa-lock"></i> Login</a></li>
-                                            </c:otherwise>
-                                        </c:choose>
-
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div><!--/header-middle-->
-        </header><!--/header-->
+        <%@include file="headerLR.jsp" %>
         <section>
             <div class="wrapper">
                 <div class="container">
-                    <h1>SIGN IN</h1>
-                    <Center>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <h1>SIGN IN</h1>
+                            <Center>
 
-                        <s:form cssClass="form" action="login" method="Post">
-                            <table>
-                                <td><tr><s:textfield name="l.user" placeholder="Username"></s:textfield></tr></td>
-                                <td><tr><s:password name="l.pass" placeholder="Password"></s:password></tr></td>
-                                <td><tr> <s:submit id="login-button"  value="Sign in" ></s:submit></tr></td>
-                        <td><tr><label>Don't have an account &nbsp;</label> <a  href="register.jsp">Sign Up</a></tr></td>
-                                    <td><tr><s:label name="error"></s:label></tr></td>
-                                </table>
-                        </s:form>
-                    </Center>
-
+                                <s:form cssClass="form" action="login" method="Post">
+                                    <table>
+                                        <td><tr><s:textfield name="l.user" placeholder="Username"></s:textfield></tr></td>
+                                        <td><tr><s:password name="l.pass" placeholder="Password"></s:password></tr></td>
+                                        <td><tr> <s:submit id="login-button"  value="Sign in" ></s:submit></tr></td>
+                                            <td><tr><label>Don't have an account &nbsp;</label> <a  href="register.jsp">Sign Up</a></tr></td>
+                                            <td><tr><s:label name="error"></s:label></tr></td>
+                                        </table>
+                                </s:form>
+                            </Center>
+                            <ul class="bg-bubbles">
+                                <li></li>
+                                <li></li>
+                                <li></li>
+                                <li></li>
+                                <li></li>
+                                <li></li>
+                                <li></li>
+                                <li></li>
+                                <li></li>
+                                <li></li>
+                            </ul>
+                            
+                        </div>
+                    </div>
                 </div>
-
-                <ul class="bg-bubbles">
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                </ul>
-            </div>
         </section>
-        
+
 
 
         <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
