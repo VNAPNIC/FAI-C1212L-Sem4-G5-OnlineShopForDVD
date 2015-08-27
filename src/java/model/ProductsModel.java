@@ -67,10 +67,7 @@ public class ProductsModel extends DataAccessHelper {
                     item.setName(rs.getString("name"));
                     item.setMonney(rs.getFloat("monney"));
                     item.setDescription(rs.getString("description"));
-                     StringBuffer sb=new StringBuffer(rs.getString("img"));
-      // Xóa "cd" trong "abcdef"
-                    sb.delete(0,1);
-                    item.setImg(sb.toString());
+                    item.setImg(rs.getString("img"));
                     item.setUrl(rs.getString("url"));
                     item.setRank(rs.getInt("rank"));
                     item.setC_id(rs.getInt("c_id"));
