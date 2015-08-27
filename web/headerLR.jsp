@@ -46,8 +46,8 @@
                 <div class="col-sm-12">
                     <div class="shop-menu pull-right">
                         <ul class="nav navbar-nav">
-                            <li><a href="index.jsp" class="active"><i class="fa fa-home">Home</i></a></li>
-                            <li><a href="contact-us.jsp"><i class="fa fa-comment">Contact</i></a></li>
+                            <li><a href="index.jsp" class="active"><i class="fa fa-home"> Home</i></a></li>
+                            <li><a href="contact-us.jsp"><i class="fa fa-comment"> Contact</i></a></li>
                             <li><a href="checkout.jsp"><i class="fa fa-crosshairs"></i> Checkout</a></li>
                             <li><a href="cart.jsp"><i class="fa fa-shopping-cart"></i> Cart</a></li>
 
