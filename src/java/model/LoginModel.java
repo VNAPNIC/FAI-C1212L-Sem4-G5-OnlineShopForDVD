@@ -25,6 +25,7 @@ public class LoginModel extends DataAccessHelper {
     private static final String GET_PROFILE = "select * from [Login]";
     private static final String REGISTER = "insert into [Login] values (?,?,?,?,?)";
     private static final String GET_TOP_1 = "SELECT TOP(1) PERCENT * FROM  [Login] ORDER  by number DESC";
+    private static final String UPDATE_STATUS = "update [Login] set status =?  where [user] =?";
 
     public Login checkLogin(String user, String pass, int rela) {
         Login l = new Login();
@@ -41,7 +42,7 @@ public class LoginModel extends DataAccessHelper {
                     l.setStatus(rs.getBoolean("status"));
                     l.setActive(rs.getBoolean("active"));
                 } else {
-                   l.setUser("");
+                    l.setUser("");
                 }
             }
             getClose();
@@ -51,17 +52,37 @@ public class LoginModel extends DataAccessHelper {
         }
         return l;
     }
-    
-    
-    public boolean getUser(String u){
+
+    public boolean updateStatus(String user, boolean status) {
         boolean check = false;
         try {
             con = getConnection();
-            if(con !=null){
+            if (con != null) {
+                PreparedStatement ps = con.prepareStatement(UPDATE_STATUS);
+                ps.setBoolean(1, status);
+                ps.setString(2, user);
+                int rs = ps.executeUpdate();
+                if (rs > 0) {
+                    check = true;
+                }
+            }
+            getClose();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return check;
+    }
+
+    public boolean getUser(String u) {
+        boolean check = false;
+        try {
+            con = getConnection();
+            if (con != null) {
                 PreparedStatement ps = con.prepareStatement(GET_USER_LOGIN);
                 ps.setString(1, u);
-                ResultSet  rs = ps.executeQuery();
-                if(rs.next()){
+                ResultSet rs = ps.executeQuery();
+                if (rs.next()) {
                     check = true;
                 }
             }
@@ -70,15 +91,15 @@ public class LoginModel extends DataAccessHelper {
         }
         return check;
     }
-    
-    public String getTop1(){
+
+    public String getTop1() {
         String top = "";
         try {
             con = getConnection();
-            if(con !=null){
+            if (con != null) {
                 PreparedStatement ps = con.prepareStatement(GET_TOP_1);
-                ResultSet  rs = ps.executeQuery();
-                if(rs.next()){
+                ResultSet rs = ps.executeQuery();
+                if (rs.next()) {
                     top = rs.getString("user");
                 }
             }
@@ -88,7 +109,7 @@ public class LoginModel extends DataAccessHelper {
         return top;
     }
 
-    public boolean Register(String u,String p) {
+    public boolean Register(String u, String p) {
         boolean check = false;
         try {
             con = getConnection();

@@ -6,27 +6,41 @@
     <!-- Configuration for the default package. -->
     <package name="default" extends="struts-default">
         
-       <action name="viewProduct" class="controller.ProductActionSupport">
+        <action name="viewProduct" class="controller.ProductActionSupport">
             <result name="success">/index.jsp</result>
             <result name="error">/404.html</result>
-       </action>
+        </action>
        
         <action name="login" class="controller.LoginActionSupport">
-            <result name="success">/index.jsp</result>
+            <result name="success">/home.jsp</result>
             <result name="input">/login.jsp</result>
         </action>
         
         <action name="logout" class="controller.LogOutActionSupport">
-            <result name="success">/index.jsp</result>
+            <result name="success">/home.jsp</result>
         </action>
         
         <action name="rslogin" class="controller.RegisterActionSupport">
             <result name="success">/rsdetail.jsp</result>
             <result name="input">/register.jsp</result>
         </action>
-          <action name="rsuser" class="controller.RegisterUserActionSupport">
+        <action name="rsuser" class="controller.RegisterUserActionSupport">
             <result name="success">/rsdetail.jsp</result>
             <result name="input">/rsdetail.jsp</result>
+        </action>
+        
+        <action name="adlogin" class="controller.LoginAdActionSupport">
+            <result name="success">/mainadmin.jsp</result>
+            <result name="input">/loginadmin.jsp</result>
+        </action>
+        
+        <action name="adlogin" class="controller.LoginAdActionSupport">
+            <result name="success">/home.jsp</result>
+            <result name="input">/home.jsp</result>
+        </action>
+        
+        <action name="Details" class="controller.DetailsActionSupport">
+            <result name="success">/product-details.jsp</result>         
         </action>
     </package>
 </struts>

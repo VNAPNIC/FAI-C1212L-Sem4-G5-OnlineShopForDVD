@@ -34,10 +34,10 @@
     <div class="header-middle"><!--header-middle-->
         <div class="container">
             <div class="row">
-                <div class="col-sm-2">
+                <div class="col-sm-3">
                     <div class="logo pull-left">
                         <div class="companyinfo">
-                            <h2><span>e</span>-shopper</h2>
+                            <h2><span>DVD</span>-shopper</h2>
 
                         </div>
                     </div>
@@ -45,7 +45,7 @@
                 <div class="col-sm-12">
                     <div class="shop-menu pull-right">
                         <ul class="nav navbar-nav">
-                            <li><a href="index.jsp" class="active"><i class="fa fa-home"> Home</i></a></li>
+                            <li><a href="home.jsp" class="active"><i class="fa fa-home"> Home</i></a></li>
                             <li><a href="contact-us.jsp"><i class="fa fa-comment"> Contact</i></a></li>
                             <li><a href="#"><i class="fa fa-user"></i> Account</a></li>
                             <li><a href="checkout.jsp"><i class="fa fa-crosshairs"></i> Checkout</a></li>
@@ -66,11 +66,7 @@
                                     <li><a href="login.jsp"><i class="fa fa-lock"></i> Login</a></li>
                                 </c:otherwise>
                             </c:choose>
-                            <li>  
-                                <div class="search_box pull-right">
-                                    <input type="text" placeholder="Search"/>
-                                </div>
-                            </li>
+                         
                         </ul>
                     </div>
                 </div>

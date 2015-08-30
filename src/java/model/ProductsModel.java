@@ -53,16 +53,16 @@ public class ProductsModel extends DataAccessHelper {
         return proList;
     }
 
-    public Products getProductByID(int p_id) {
+    public Products getProductByID(int id) {
+
         Products item = new Products();
         try {
-            con = getConnection();
-            if (con != null) {
-                PreparedStatement ps = con.prepareStatement(GET_PRODUCT_BYID);
-                ps.setInt(1, p_id);
-        
-                ResultSet rs = ps.executeQuery();
-                if (rs.next()) {
+            conn = getConnection();
+            PreparedStatement ps = conn.prepareStatement(GET_PRODUCT_BYID);
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery();
+            if (rs != null) {
+                while (rs.next()) {
                     item.setP_id(rs.getInt("p_id"));
                     item.setName(rs.getString("name"));
                     item.setMonney(rs.getFloat("monney"));
@@ -74,8 +74,7 @@ public class ProductsModel extends DataAccessHelper {
                     item.setActive(rs.getBoolean("active"));
                 }
             }
-            getClose();
-            getClose();
+            conn.close();
         } catch (Exception e) {
         }
         return item;
@@ -88,10 +87,10 @@ public class ProductsModel extends DataAccessHelper {
             con = getConnection();
             if (con != null) {
                 PreparedStatement ps = con.prepareStatement(GET_PRODUCT_BY_CATE);
-                ps.setInt(1, c_id);        
+                ps.setInt(1, c_id);
                 ps.setBoolean(2, true);
                 ResultSet rs = ps.executeQuery();
-                if (rs.next()) {
+                while (rs.next()) {
                     Products item = new Products();
                     item.setP_id(rs.getInt("p_id"));
                     item.setName(rs.getString("name"));
@@ -105,7 +104,7 @@ public class ProductsModel extends DataAccessHelper {
                     pbc.add(item);
                 }
             }
-            getClose();
+            con.close();
         } catch (Exception e) {
         }
         return pbc;

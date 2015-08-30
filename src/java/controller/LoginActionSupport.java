@@ -40,39 +40,44 @@ public class LoginActionSupport extends ActionSupport implements SessionAware {
 
     public LoginActionSupport() {
     }
-    
-     public String logout() throws Exception{
+
+    public String logout() throws Exception {
         sessionMap.remove("login");
         return SUCCESS;
     }
 
     @Override
     public String execute() throws Exception {
-        LoginModel lm = new LoginModel();
-
+        LoginModel lm;
         if (l.getUser().equals("") || l.getPass().equals("")) {
             return INPUT;
         }
-       Login rl = lm.checkLogin(l.getUser(), l.getPass(), 3);
+        lm = new LoginModel();
+        Login rl = lm.checkLogin(l.getUser(), l.getPass(), l.getRu_id());
         if (rl.getUser().equals("")) {
             error = Ms.LOGIN_FAIL;
             return INPUT;
         } else {
-
             if (rl.isStatus()) {
                 error = Ms.LOGIN_STATUS;
                 return INPUT;
             }
-
             if (!rl.isActive()) {
                 error = Ms.LOGIN_ACTIVE;
                 return INPUT;
             }
             if (!rl.isStatus() && rl.isActive()) {
-                sessionMap.put("login", l.getUser());
-                return SUCCESS;
+                lm = new LoginModel();
+                if (lm.updateStatus(l.getUser(), true)) {
+                    sessionMap.put("login", l.getUser());
+                    return SUCCESS;
+                } else {
+                    error = Ms.LOGIN_FAIL;
+                    return INPUT;
+                }
             }
         }
+
         return INPUT;
     }
 

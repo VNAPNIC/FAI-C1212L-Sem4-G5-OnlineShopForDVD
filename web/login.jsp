@@ -52,6 +52,7 @@
                                             <td><tr><label>Don't have an account &nbsp;</label> <a  href="register.jsp">Sign Up</a></tr></td>
                                             <td><tr><s:label name="error"></s:label></tr></td>
                                         </table>
+                                        <s:hidden name="l.ru_id" value="3"></s:hidden>
                                 </s:form>
                             </Center>
                             <ul class="bg-bubbles">
@@ -66,7 +67,7 @@
                                 <li></li>
                                 <li></li>
                             </ul>
-                            
+
                         </div>
                     </div>
                 </div>

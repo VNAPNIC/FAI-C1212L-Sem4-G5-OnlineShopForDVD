@@ -58,7 +58,7 @@
                                             <td><tr><s:textfield name="ud.name" placeholder="Name"></s:textfield></tr></td>
                                             <td><tr><s:textfield name="ud.address" placeholder="Address"></s:textfield></tr></td>
                                             <td><tr><s:textfield name="ud.phone" type="number" placeholder="Phone"></s:textfield></tr></td>
-                                            <td><tr><s:textfield name="ud.email" placeholder="Email"></s:textfield></tr></td>
+                                            <td><tr><s:textfield name="ud.email" type="email" placeholder="Email"></s:textfield></tr></td>
                                             <td><tr><s:textfield name="ud.bod" type="date"></s:textfield></tr></td>
                                             <td><tr><s:textfield name="identityCard" type="number"  placeholder="Identity Card"></s:textfield></tr></td>
                                             <td><tr> <s:submit id="login-button"  value="Sign up" ></s:submit></tr></td>

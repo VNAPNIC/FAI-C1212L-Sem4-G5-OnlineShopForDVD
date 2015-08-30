@@ -7,6 +7,7 @@ package controller;
 
 import com.opensymphony.xwork2.ActionSupport;
 import java.util.Map;
+import model.LoginModel;
 import org.apache.struts2.interceptor.SessionAware;
 
 /**
@@ -22,7 +23,10 @@ public class LogOutActionSupport extends ActionSupport implements SessionAware {
 
     @Override
     public String execute() throws Exception {
-        sessionMap.remove("login");
+        LoginModel lm = new LoginModel();
+        if(lm.updateStatus(sessionMap.get("login").toString(), false)){
+            sessionMap.remove("login");
+        }
         return SUCCESS;
     }
 

@@ -55,7 +55,7 @@
             </div>
         </section><!--/slider-->
 
-         <section>
+        <section>
             <div class="container">
                 <div class="row">
                     <div class="col-sm-3">
@@ -65,12 +65,17 @@
                                 <s:iterator value="categoriesList">
                                     <div class="panel panel-default">
                                         <div class="panel-heading">
-                                            <h4 class="panel-title"><a href="#"><s:property value="name"/></a></h4>
+                                            <h4 class="panel-title">
+                                                <s:url action="Categories" var="url">
+                                                    <s:param name="c_id">${c_id}</s:param>
+                                                </s:url>
+                                                <s:a href="%{url}"><s:text name="name" /></s:a>
+                                                </h4>
+                                            </div>
                                         </div>
-                                    </div>
                                 </s:iterator>
                             </div><!--/category-products-->
-                           <div class="shipping text-center"><!--shipping-->
+                            <div class="shipping text-center"><!--shipping-->
                                 <img src="images/home/shipping.jpg" alt="" />
                             </div><!--/shipping-->
 
@@ -84,20 +89,23 @@
                                     <div class="product-image-wrapper">
                                         <div class="single-products">
                                             <div class="productinfo text-center">
-                                                <img src="<s:property value="img"/>" alt="" />
+                                                <img height="300px" width="240px" src="<s:property value="img"/>" alt="" />
                                                 <h2><s:property value="monney"/>$</h2>
                                                 <p><s:property value="name"/></p>
-                                                <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
                                             </div>
                                             <div class="product-overlay">
                                                 <div class="overlay-content">
                                                     <p><s:property value="description"/></p>
-                                                    <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>View Details</a>
+                                                    <s:url action="Details" var="detail">
+                                                        <s:param name="id">${p_id}</s:param>
+                                                        <s:param name="idct">${c_id}</s:param>
+                                                    </s:url>
+                                                    <s:a href="%{detail}" cssClass="btn btn-default add-to-cart">View Details</s:a>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
                             </s:iterator>
                         </div>
                         <!--features_items-->

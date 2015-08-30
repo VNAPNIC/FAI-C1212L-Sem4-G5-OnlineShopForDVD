@@ -38,7 +38,7 @@
                 <div class="col-sm-2">
                     <div class="logo pull-left">
                         <div class="companyinfo">
-                            <h2><span>e</span>-shopper</h2>
+                            <h2><span>DVD</span>-shopper</h2>
 
                         </div>
                     </div>
@@ -46,7 +46,7 @@
                 <div class="col-sm-12">
                     <div class="shop-menu pull-right">
                         <ul class="nav navbar-nav">
-                            <li><a href="index.jsp" class="active"><i class="fa fa-home"> Home</i></a></li>
+                            <li><a href="home.jsp" class="active"><i class="fa fa-home"> Home</i></a></li>
                             <li><a href="contact-us.jsp"><i class="fa fa-comment"> Contact</i></a></li>
                             <li><a href="checkout.jsp"><i class="fa fa-crosshairs"></i> Checkout</a></li>
                             <li><a href="cart.jsp"><i class="fa fa-shopping-cart"></i> Cart</a></li>
@@ -54,11 +54,11 @@
                             <c:choose> 
                                 <c:when test="${!empty sessionScope['login']}">
                                     <li><%
-                                        response.sendRedirect("index.jsp");
+                                        response.sendRedirect("home.jsp");
                                         %> </li>
                                 </c:when>
                                 <c:otherwise>
-                                    <li><a href="login.jsp"><i class="fa fa-lock"></i> Login</a></li>
+                                    <li><a href="home.jsp"><i class="fa fa-lock"></i> Login</a></li>
                                 </c:otherwise>
                             </c:choose>
                         </ul>
