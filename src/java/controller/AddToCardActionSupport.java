@@ -80,6 +80,7 @@ public class AddToCardActionSupport extends ActionSupport implements SessionAwar
 
                             total = Float.parseFloat(df.format(total + quantitys.get(j).getPrice()));
                         }
+                        sessionMap.put("total", total);
                         return SUCCESS;
                     }
                 }
@@ -95,6 +96,7 @@ public class AddToCardActionSupport extends ActionSupport implements SessionAwar
                 for (int j = 0; j < quantitys.size(); j++) {
                     total = Float.parseFloat(df.format(total + quantitys.get(j).getPrice()));
                 }
+                sessionMap.put("total", total);
                 return SUCCESS;
             } else {
                 DecimalFormat df = new DecimalFormat("###.##");
@@ -111,6 +113,7 @@ public class AddToCardActionSupport extends ActionSupport implements SessionAwar
                 for (int j = 0; j < quantitys.size(); j++) {
                     total = Float.parseFloat(df.format(total + quantitys.get(j).getPrice()));
                 }
+                sessionMap.put("total", total);
                 return SUCCESS;
             }
 

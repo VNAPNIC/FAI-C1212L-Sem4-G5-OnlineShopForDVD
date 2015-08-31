@@ -173,10 +173,12 @@
 
                             <ul>
                                 <li>Shipping Cost <span>Free</span></li>
-                                    <s:iterator value="#session.total" status="stat" var="ride">
-                                    <li>Total <span>$<s:property value="total"/></span></li>
-                                    </s:iterator>
-
+                                <s:if test="#session.total != null"> 
+                                <li>Total <span>$<s:property value="#session.total"></s:property></span></li>
+                                </s:if>
+                                <s:else>
+                                <li>Total <span>$0</span></li>
+                                </s:else>
                             </ul>
                             <a class="btn btn-default update" href="">Update</a>
                             <a class="btn btn-default check_out" href="">Check Out</a>
