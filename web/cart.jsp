@@ -173,20 +173,24 @@
 
                             <ul>
                                 <li>Shipping Cost <span>Free</span></li>
-                                <s:if test="#session.total != null"> 
-                                <li>Total <span>$<s:property value="#session.total"></s:property></span></li>
-                                </s:if>
-                                <s:else>
-                                <li>Total <span>$0</span></li>
-                                </s:else>
+                                    <s:if test="#session.total != null"> 
+                                    <li>Total <span>$<s:property value="#session.total"></s:property></span></li>
+                                    </s:if>
+                                    <s:else>
+                                    <li>Total <span>$0</span></li>
+                                    </s:else>
                             </ul>
-                            <a class="btn btn-default update" href="">Update</a>
-                            <a class="btn btn-default check_out" href="">Check Out</a>
+
+                            <s:url action="CheckOut" var="checkout">
+                                <s:param name="active">rlr</s:param>
+                            </s:url>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                             <s:a cssClass="btn btn-default check_out" href="%{checkout}">Check Out</s:a>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </section><!--/#do_action-->
+            </section><!--/#do_action-->
 
         <%@include file="footer.jsp" %>
 
