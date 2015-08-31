@@ -11,8 +11,8 @@
                 <div class="col-sm-6">
                     <div class="contactinfo">
                         <ul class="nav nav-pills">
-                            <li><a href="#"><i class="fa fa-phone"></i> +84 963190925</a></li>
-                            <li><a href="#"><i class="fa fa-envelope"></i> nambh_a05320@fpt.aptech.ac.vn</a></li>
+                            <li><a href="#"><i class="fa fa-phone"></i> +84 88888888</a></li>
+                            <li><a href="#"><i class="fa fa-envelope"></i> E-shopper.contact@gmail.com</a></li>
                         </ul>
                     </div>
                 </div>

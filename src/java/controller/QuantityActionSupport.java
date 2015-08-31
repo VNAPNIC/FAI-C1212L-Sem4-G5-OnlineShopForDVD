@@ -85,7 +85,11 @@ public class QuantityActionSupport extends ActionSupport implements SessionAware
                     if (quantitys.get(i).getP_id() == Integer.parseInt(request.getParameter("id"))) {
                         DecimalFormat df = new DecimalFormat("###.##");
                         Quantity item = new Quantity();
-                        int n = quantitys.get(i).getNumber() -1;
+                        
+                        int n = 1;
+                        if(quantitys.get(i).getNumber() >1){
+                               n = quantitys.get(i).getNumber() -1;
+                        }
                         item.setNumber(n);
                         Products p = pm.getProductByID(Integer.parseInt(request.getParameter("id")));
                         item.setProducts(p);

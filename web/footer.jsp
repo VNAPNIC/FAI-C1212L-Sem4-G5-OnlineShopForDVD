@@ -1,8 +1,3 @@
-<%-- 
-    Document   : footer
-    Created on : Aug 27, 2015, 4:27:09 PM
-    Author     : hainam1421
---%>
 
 <footer id="footer"><!--Footer-->
             <div class="footer-top">
@@ -95,7 +90,7 @@
                 <div class="container">
                     <div class="row">
                         <p class="pull-left">Copyright © 2015 Online shop DVD Inc. All rights reserved.</p>
-                        <p class="pull-right">Designed by <span><a target="_blank" href="https://www.facebook.com/apnic.net">NamIT</a></span></p>
+                        <p class="pull-right">Designed by <span><a target="_blank" href="#">G5</a></span></p>
                     </div>
                 </div>
             </div>

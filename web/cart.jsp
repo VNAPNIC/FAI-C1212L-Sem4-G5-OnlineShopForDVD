@@ -60,9 +60,9 @@
                                             </s:url>
                                                 
                                             <div class="cart_quantity_button">
-                                                <a class="cart_quantity_up" href="%{up}"> + </a>
+                                                <s:a cssClass="cart_quantity_up" href="%{up}"> + </s:a>
                                                 <input readonly class="cart_quantity_input" type="text" name="quantity" value="<s:property value="number"/>" autocomplete="off" size="2">
-                                                <a class="cart_quantity_down" href="%{down}"> - </a>
+                                                <s:a cssClass="cart_quantity_down" href="%{down}"> - </s:a >
                                             </div>
                                         </td>
                                         <td class="cart_total">

@@ -1,8 +1,4 @@
-<%-- 
-    Document   : head
-    Created on : Aug 27, 2015, 4:30:49 PM
-    Author     : hainam1421
---%>
+
 
 <head>
         <meta charset="utf-8">
