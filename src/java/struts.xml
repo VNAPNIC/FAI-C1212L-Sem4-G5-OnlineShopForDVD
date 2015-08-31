@@ -52,5 +52,10 @@
             <result name="error">/404.html</result>
         </action>
         
+         <action name="Quantity" class="controller.QuantityActionSupport" >
+            <result name="success">/cart.jsp</result>
+            <result name="error">/404.html</result>
+        </action>
+        
     </package>
 </struts>

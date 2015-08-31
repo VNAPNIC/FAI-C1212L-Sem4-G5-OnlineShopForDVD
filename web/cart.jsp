@@ -50,10 +50,19 @@
                                             <p>$<s:property value="products.monney"/></p>
                                         </td>
                                         <td class="cart_quantity">
+                                            <s:url action="Quantity" var="down">
+                                                <s:param name="id">${products.p_id}</s:param>
+                                                <s:param name="active">down</s:param>
+                                            </s:url>
+                                            <s:url action="Quantity" var="up">
+                                                <s:param name="id">${products.p_id}</s:param>
+                                                <s:param name="active">up</s:param>
+                                            </s:url>
+                                                
                                             <div class="cart_quantity_button">
-                                                <a class="cart_quantity_up" href=""> + </a>
+                                                <a class="cart_quantity_up" href="%{up}"> + </a>
                                                 <input readonly class="cart_quantity_input" type="text" name="quantity" value="<s:property value="number"/>" autocomplete="off" size="2">
-                                                <a class="cart_quantity_down" href=""> - </a>
+                                                <a class="cart_quantity_down" href="%{down}"> - </a>
                                             </div>
                                         </td>
                                         <td class="cart_total">
@@ -158,10 +167,9 @@
                     <div class="col-sm-6">
                         <div class="total_area">
                             <ul>
-                                <s:iterator value="quantitys">
-                                    <li>Shipping Cost <span>Free</span></li>
-                                    <li>Total <span>$<s:property value="price"/></span></li>
-                                    </s:iterator>
+                                <li>Shipping Cost <span>Free</span></li>
+                                <li>Total <span>$<s:property value="total"/></span></li>
+
                             </ul>
                             <a class="btn btn-default update" href="">Update</a>
                             <a class="btn btn-default check_out" href="">Check Out</a>
