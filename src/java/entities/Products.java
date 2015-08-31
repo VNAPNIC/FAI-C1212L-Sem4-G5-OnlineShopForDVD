@@ -20,6 +20,7 @@ public class Products {
     int rank;
     boolean active;
     int c_id;
+    
 
     public int getP_id() {
         return p_id;

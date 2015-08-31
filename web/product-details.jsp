@@ -10,7 +10,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <%@include file="head.jsp" %>
-
+    
     <body>
         <%@include file="header.jsp" %>
         <section>
@@ -57,14 +57,16 @@
                                 <div class="product-information"><!--/product-information-->
                                     <s:iterator value="productDetail">
                                         <b><h1><s:property value="name"/></h1></b>
-                                        <s:hidden value="p_id"/>
                                         <span>
                                             <span>$<s:property value="monney"/></span>
-                                            
-                                            <button type="button" class="btn btn-fefault cart">
+                                            <s:url action="AddCar" var="addcar">
+                                                <s:param name="id">${p_id}</s:param>
+                                            </s:url>
+
+                                            <s:a href="%{addcar}" cssClass="btn btn-fefault cart" >
                                                 <i class="fa fa-shopping-cart"></i>
                                                 Add to cart
-                                            </button>
+                                            </s:a>
                                         </span>
                                         <p><b>Description:</b> <s:property value="description"/></p>
                                         <p><b>Brand:</b> DVD-SHOPPER</p>
@@ -86,12 +88,12 @@
                             <br/>
                             <br/>
                         </div>
-                            <div class="recommended_items"><!--recommended_items-->
-                                <h2 class="title text-center">recommended items</h2>
+                        <div class="recommended_items"><!--recommended_items-->
+                            <h2 class="title text-center">recommended items</h2>
 
-                                <div id="recommended-item-carousel" class="carousel slide" data-ride="carousel">
-                                    <div class="carousel-inner">
-                                        <div class="item active">
+                            <div id="recommended-item-carousel" class="carousel slide" data-ride="carousel">
+                                <div class="carousel-inner">
+                                    <div class="item active">
                                         <s:iterator value="products">
                                             <div class="col-sm-4">
                                                 <div class="product-image-wrapper">

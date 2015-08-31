@@ -16,14 +16,12 @@ public class HistoryOder {
     int ho_id;
     String dateoder;
     String user;
-    int p_id;
+    int q_id;
     int pt_id;
     int amount;
     float monney;
     float ship;
     boolean active;
-    Products products;
-    PaymentType paymentType;
 
     public int getHo_id() {
         return ho_id;
@@ -49,13 +47,15 @@ public class HistoryOder {
         this.user = user;
     }
 
-    public int getP_id() {
-        return p_id;
+    public int getQ_id() {
+        return q_id;
     }
 
-    public void setP_id(int p_id) {
-        this.p_id = p_id;
+    public void setQ_id(int q_id) {
+        this.q_id = q_id;
     }
+
+    
 
     public int getPt_id() {
         return pt_id;
@@ -96,22 +96,5 @@ public class HistoryOder {
     public void setActive(boolean active) {
         this.active = active;
     }
-
-    public Products getProducts() {
-        return products;
-    }
-
-    public void setProducts(Products products) {
-        this.products = products;
-    }
-
-    public PaymentType getPaymentType() {
-        return paymentType;
-    }
-
-    public void setPaymentType(PaymentType paymentType) {
-        this.paymentType = paymentType;
-    }
-    
     
 }

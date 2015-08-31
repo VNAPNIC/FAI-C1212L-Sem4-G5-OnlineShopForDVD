@@ -46,5 +46,11 @@
             <result name="success">/index.jsp</result>
             <result name="error">/404.html</result>
         </action>
+        
+        <action name="AddCar" class="controller.AddToCardActionSupport" >
+            <result name="success">/cart.jsp</result>
+            <result name="error">/404.html</result>
+        </action>
+        
     </package>
 </struts>
