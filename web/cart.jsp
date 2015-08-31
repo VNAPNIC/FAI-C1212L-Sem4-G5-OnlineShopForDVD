@@ -58,20 +58,24 @@
                                                 <s:param name="id">${products.p_id}</s:param>
                                                 <s:param name="active">up</s:param>
                                             </s:url>
-                                                
+
                                             <div class="cart_quantity_button">
                                                 <s:a cssClass="cart_quantity_up" href="%{up}"> + </s:a>
                                                 <input readonly class="cart_quantity_input" type="text" name="quantity" value="<s:property value="number"/>" autocomplete="off" size="2">
                                                 <s:a cssClass="cart_quantity_down" href="%{down}"> - </s:a >
-                                            </div>
-                                        </td>
-                                        <td class="cart_total">
-                                            <p class="cart_total_price">$<s:property value="price"/></p>
+                                                </div>
+                                            </td>
+                                            <td class="cart_total">
+                                                <p class="cart_total_price">$<s:property value="price"/></p>
                                         </td>
                                         <td class="cart_delete">
-                                            <a class="cart_quantity_delete" href=""><i class="fa fa-times"></i></a>
-                                        </td>
-                                    </tr>
+                                            <s:url action="Quantity" var="remove">
+                                                <s:param name="id">${products.p_id}</s:param>
+                                                <s:param name="active">remove</s:param>
+                                            </s:url>
+                                            <s:a cssClass="cart_quantity_delete" href="%{remove}"><i class="fa fa-times"></i></s:a>
+                                            </td>
+                                        </tr>
                                 </s:iterator>
                             </s:if> 
                             <s:else>
@@ -166,9 +170,12 @@
                     </div>
                     <div class="col-sm-6">
                         <div class="total_area">
+
                             <ul>
                                 <li>Shipping Cost <span>Free</span></li>
-                                <li>Total <span>$<s:property value="total"/></span></li>
+                                    <s:iterator value="#session.total" status="stat" var="ride">
+                                    <li>Total <span>$<s:property value="total"/></span></li>
+                                    </s:iterator>
 
                             </ul>
                             <a class="btn btn-default update" href="">Update</a>

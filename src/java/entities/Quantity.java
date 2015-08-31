@@ -14,6 +14,7 @@ public class Quantity {
     int number;
     float price;
     int p_id;
+    
     Products products;
     public int getQ_id() {
         return q_id;
