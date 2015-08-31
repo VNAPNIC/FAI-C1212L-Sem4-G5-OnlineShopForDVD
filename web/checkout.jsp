@@ -18,7 +18,16 @@
             <div class="container">
                 <div class="breadcrumbs">
                     <ol class="breadcrumb">
-                        <li><a href="#">Home</a></li>
+                        <c:choose> 
+                            <c:when test="${empty sessionScope['login']}">
+                                <li><%
+                                    response.sendRedirect("login.jsp");
+                                    %> </li>
+                                </c:when>
+                                <c:otherwise>
+                                <li><a href="home.jsp">Home</a></li>
+                                </c:otherwise>
+                            </c:choose>
                         <li class="active">Check out</li>
                     </ol>
                 </div><!--/breadcrums-->
@@ -135,119 +144,76 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td class="cart_product">
-                                    <a href=""><img src="images/cart/one.png" alt=""></a>
-                                </td>
-                                <td class="cart_description">
-                                    <h4><a href="">Colorblock Scuba</a></h4>
-                                    <p>Web ID: 1089772</p>
-                                </td>
-                                <td class="cart_price">
-                                    <p>$59</p>
-                                </td>
-                                <td class="cart_quantity">
-                                    <div class="cart_quantity_button">
-                                        <a class="cart_quantity_up" href=""> + </a>
-                                        <input class="cart_quantity_input" type="text" name="quantity" value="1" autocomplete="off" size="2">
-                                        <a class="cart_quantity_down" href=""> - </a>
-                                    </div>
-                                </td>
-                                <td class="cart_total">
-                                    <p class="cart_total_price">$59</p>
-                                </td>
-                                <td class="cart_delete">
-                                    <a class="cart_quantity_delete" href=""><i class="fa fa-times"></i></a>
-                                </td>
-                            </tr>
+                            <s:if test="#session.car != null">    
+                                <s:iterator value="#session.car" status="stat" var="ride">
 
-                            <tr>
-                                <td class="cart_product">
-                                    <a href=""><img src="images/cart/two.png" alt=""></a>
-                                </td>
-                                <td class="cart_description">
-                                    <h4><a href="">Colorblock Scuba</a></h4>
-                                    <p>Web ID: 1089772</p>
-                                </td>
-                                <td class="cart_price">
-                                    <p>$59</p>
-                                </td>
-                                <td class="cart_quantity">
-                                    <div class="cart_quantity_button">
-                                        <a class="cart_quantity_up" href=""> + </a>
-                                        <input class="cart_quantity_input" type="text" name="quantity" value="1" autocomplete="off" size="2">
-                                        <a class="cart_quantity_down" href=""> - </a>
-                                    </div>
-                                </td>
-                                <td class="cart_total">
-                                    <p class="cart_total_price">$59</p>
-                                </td>
-                                <td class="cart_delete">
-                                    <a class="cart_quantity_delete" href=""><i class="fa fa-times"></i></a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="cart_product">
-                                    <a href=""><img src="images/cart/three.png" alt=""></a>
-                                </td>
-                                <td class="cart_description">
-                                    <h4><a href="">Colorblock Scuba</a></h4>
-                                    <p>Web ID: 1089772</p>
-                                </td>
-                                <td class="cart_price">
-                                    <p>$59</p>
-                                </td>
-                                <td class="cart_quantity">
-                                    <div class="cart_quantity_button">
-                                        <a class="cart_quantity_up" href=""> + </a>
-                                        <input class="cart_quantity_input" type="text" name="quantity" value="1" autocomplete="off" size="2">
-                                        <a class="cart_quantity_down" href=""> - </a>
-                                    </div>
-                                </td>
-                                <td class="cart_total">
-                                    <p class="cart_total_price">$59</p>
-                                </td>
-                                <td class="cart_delete">
-                                    <a class="cart_quantity_delete" href=""><i class="fa fa-times"></i></a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td colspan="4">&nbsp;</td>
-                                <td colspan="2">
-                                    <table class="table table-condensed total-result">
-                                        <tr>
-                                            <td>Cart Sub Total</td>
-                                            <td>$59</td>
+                                    <tr>
+                                        <td class="cart_product">
+                                            <a href=""><img src="<s:property value="products.img"/>" alt="" /></a>
+                                        </td>
+                                        <td class="cart_description">
+                                            <h4><a href=""><s:property value="products.name"/></a></h4>
+                                            <p>Web ID: <s:property value="q_id"/></p>
+                                        </td>
+                                        <td class="cart_price">
+                                            <p>$<s:property value="products.monney"/></p>
+                                        </td>
+                                        <td class="cart_quantity">
+                                            <s:url action="Quantity" var="down">
+                                                <s:param name="id">${products.p_id}</s:param>
+                                                <s:param name="active">down</s:param>
+                                            </s:url>
+                                            <s:url action="Quantity" var="up">
+                                                <s:param name="id">${products.p_id}</s:param>
+                                                <s:param name="active">up</s:param>
+                                            </s:url>
+
+                                            <div class="cart_quantity_button">
+                                                <s:a cssClass="cart_quantity_up" href="#"> + </s:a>
+                                                <input readonly class="cart_quantity_input" type="text" name="quantity" value="<s:property value="number"/>" autocomplete="off" size="2">
+                                                <s:a cssClass="cart_quantity_down" href="#"> - </s:a >
+                                                </div>
+                                            </td>
+                                            <td class="cart_total">
+                                                <p class="cart_total_price">$<s:property value="price"/></p>
+                                        </td>
+                                        <td class="cart_delete">
+                                            <s:url action="Quantity" var="remove">
+                                                <s:param name="id">${products.p_id}</s:param>
+                                                <s:param name="active">remove</s:param>
+                                            </s:url>
+                                            <s:a cssClass="cart_quantity_delete" href="#"><i class="fa fa-times"></i></s:a>
+                                            </td>
                                         </tr>
-                                        <tr>
-                                            <td>Exo Tax</td>
-                                            <td>$2</td>
-                                        </tr>
-                                        <tr class="shipping-cost">
-                                            <td>Shipping Cost</td>
-                                            <td>Free</td>										
-                                        </tr>
-                                        <tr>
-                                            <td>Total</td>
-                                            <td><span>$61</span></td>
-                                        </tr>
-                                    </table>
-                                </td>
-                            </tr>
+                                </s:iterator>
+                            </s:if> 
+                            <s:else>
+                                <tr>
+                                    <td class="cart_product">
+
+                                    </td>
+                                    <td class="cart_description">
+
+                                    </td>
+                                    <td class="cart_price">
+
+                                    </td>
+                                    <td class="cart_quantity">
+
+                                    </td>
+                                    <td class="cart_total">
+
+                                    </td>
+                                    <td class="cart_delete">
+
+                                    </td>
+                                </tr>
+                            </s:else>
+
                         </tbody>
                     </table>
                 </div>
-                <div class="payment-options">
-                    <span>
-                        <label><input type="checkbox"> Direct Bank Transfer</label>
-                    </span>
-                    <span>
-                        <label><input type="checkbox"> Check Payment</label>
-                    </span>
-                    <span>
-                        <label><input type="checkbox"> Paypal</label>
-                    </span>
-                </div>
+                
             </div>
         </section> <!--/#cart_items-->
 

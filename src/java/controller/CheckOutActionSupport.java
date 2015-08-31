@@ -7,14 +7,18 @@ package controller;
 
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
+import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import org.apache.struts2.ServletActionContext;
+import org.apache.struts2.interceptor.SessionAware;
 
 /**
  *
  * @author hainam1421
  */
-public class CheckOutActionSupport extends ActionSupport {
+public class CheckOutActionSupport extends ActionSupport implements SessionAware {
+
+    private Map<String, Object> sessionMap;
     
     public CheckOutActionSupport() {
     }
@@ -24,10 +28,15 @@ public class CheckOutActionSupport extends ActionSupport {
         
          HttpServletRequest request = (HttpServletRequest) ActionContext.getContext().get(ServletActionContext.HTTP_REQUEST);
          if(request.getParameter("active").equals("rlr")){
-            return "rlr";
+                return "rlr";
          }
         
         return SUCCESS;
+    }
+    
+    @Override
+    public void setSession(Map<String, Object> sessionMap) {
+        this.sessionMap = sessionMap;
     }
     
 }

@@ -11,8 +11,8 @@
                 <div class="col-sm-6">
                     <div class="contactinfo">
                         <ul class="nav nav-pills">
-                            <li><a href="#"><i class="fa fa-phone"></i> +84 88888888</a></li>
-                            <li><a href="#"><i class="fa fa-envelope"></i> E-shopper.contact@gmail.com</a></li>
+                            <li><a href="#"><i class="fa fa-phone"></i> +84 9888888</a></li>
+                            <li><a href="#"><i class="fa fa-envelope"></i> DVD-shopper.contact@gmail.com</a></li>
                         </ul>
                     </div>
                 </div>
@@ -48,7 +48,6 @@
                             <li><a href="home.jsp" class="active"><i class="fa fa-home"> Home</i></a></li>
                             <li><a href="contact-us.jsp"><i class="fa fa-comment"> Contact</i></a></li>
                             <li><a href="#"><i class="fa fa-user"></i> Account</a></li>
-                            <li><a href="checkout.jsp"><i class="fa fa-crosshairs"></i> Checkout</a></li>
                             <li><a href="cart.jsp"><i class="fa fa-shopping-cart"></i> Cart</a></li>
 
                             <c:choose> 

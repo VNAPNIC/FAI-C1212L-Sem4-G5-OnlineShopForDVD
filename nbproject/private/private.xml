@@ -5,7 +5,9 @@
         <group>
             <file>file:/F:/Java/ProjectSem4/FAI-C1212L-Sem4-G5-OnlineShopForDVD/src/java/controller/AddToCardActionSupport.java</file>
             <file>file:/F:/Java/ProjectSem4/FAI-C1212L-Sem4-G5-OnlineShopForDVD/src/java/struts.xml</file>
+            <file>file:/F:/Java/ProjectSem4/FAI-C1212L-Sem4-G5-OnlineShopForDVD/src/java/controller/QuantityActionSupport.java</file>
             <file>file:/F:/Java/ProjectSem4/FAI-C1212L-Sem4-G5-OnlineShopForDVD/web/cart.jsp</file>
+            <file>file:/F:/Java/ProjectSem4/FAI-C1212L-Sem4-G5-OnlineShopForDVD/src/java/controller/CheckOutActionSupport.java</file>
             <file>file:/F:/Java/ProjectSem4/FAI-C1212L-Sem4-G5-OnlineShopForDVD/src/java/controller/DetailsActionSupport.java</file>
             <file>file:/F:/Java/ProjectSem4/FAI-C1212L-Sem4-G5-OnlineShopForDVD/web/product-details.jsp</file>
         </group>

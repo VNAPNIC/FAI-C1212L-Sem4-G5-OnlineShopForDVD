@@ -21,6 +21,9 @@ public class HistoryOder {
     int amount;
     float monney;
     float ship;
+    String nameship;
+    String addressship;
+    String phoneship;
     boolean active;
 
     public int getHo_id() {
@@ -96,5 +99,30 @@ public class HistoryOder {
     public void setActive(boolean active) {
         this.active = active;
     }
+
+    public String getNameship() {
+        return nameship;
+    }
+
+    public void setNameship(String nameship) {
+        this.nameship = nameship;
+    }
+
+    public String getAddressship() {
+        return addressship;
+    }
+
+    public void setAddressship(String addressship) {
+        this.addressship = addressship;
+    }
+
+    public String getPhoneship() {
+        return phoneship;
+    }
+
+    public void setPhoneship(String phoneship) {
+        this.phoneship = phoneship;
+    }
+    
     
 }

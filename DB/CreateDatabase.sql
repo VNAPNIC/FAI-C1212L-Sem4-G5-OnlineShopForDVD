@@ -128,6 +128,9 @@ create table HistoryOder
 	monney float,
 	ship float,
 	active bit,
+	nameship nvarchar(50),
+	addressship nvarchar(50),
+	phoneship nvarchar(50),
 	constraint fk_HistoryOderLogin foreign key([user]) references [Login]([user]),
 	constraint fk_HistoryOderQuantity foreign key(q_id) references Quantity(q_id),
 	constraint fk_HistoryOderPaymentType foreign key(pt_id) references PaymentType(pt_id)
