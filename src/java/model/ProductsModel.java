@@ -21,6 +21,7 @@ public class ProductsModel extends DataAccessHelper {
 
     private final String GET_PRODUCT = "SELECT * FROM Products where active=?";
     private final String GET_PRODUCT_BYID = "SELECT * FROM Products WHERE p_id = ?";
+    private final String GET_PRODUCT_BY_CATE_TOP3 = "SELECT TOP 3 * FROM Products WHERE c_id = ? and active=? and p_id !=?";
     private final String GET_PRODUCT_BY_CATE = "SELECT * FROM Products WHERE c_id = ? and active=?";
 
     Connection conn = null;
@@ -40,7 +41,7 @@ public class ProductsModel extends DataAccessHelper {
                     item.setMonney(rs.getFloat("monney"));
                     item.setDescription(rs.getString("description"));
                     item.setImg(rs.getString("img"));
-                    item.setUrl(rs.getString("url"));
+                    item.setUrl("https://www.youtube.com/embed/"+rs.getString("url"));
                     item.setRank(rs.getInt("rank"));
                     item.setC_id(rs.getInt("c_id"));
                     item.setActive(rs.getBoolean("active"));
@@ -68,7 +69,7 @@ public class ProductsModel extends DataAccessHelper {
                     item.setMonney(rs.getFloat("monney"));
                     item.setDescription(rs.getString("description"));
                     item.setImg(rs.getString("img"));
-                    item.setUrl(rs.getString("url"));
+                    item.setUrl("https://www.youtube.com/embed/"+rs.getString("url"));
                     item.setRank(rs.getInt("rank"));
                     item.setC_id(rs.getInt("c_id"));
                     item.setActive(rs.getBoolean("active"));
@@ -81,7 +82,37 @@ public class ProductsModel extends DataAccessHelper {
 
     }
 
-    public ArrayList<Products> getProductByCate(int c_id) {
+    public ArrayList<Products> getProductByCate(int c_id,int p_id) {
+        ArrayList<Products> pbc = new ArrayList<>();
+        try {
+            con = getConnection();
+            if (con != null) {
+                PreparedStatement ps = con.prepareStatement(GET_PRODUCT_BY_CATE_TOP3);
+                ps.setInt(1, c_id);
+                ps.setBoolean(2, true);
+                ps.setInt(3, p_id);
+                ResultSet rs = ps.executeQuery();
+                while (rs.next()) {
+                    Products item = new Products();
+                    item.setP_id(rs.getInt("p_id"));
+                    item.setName(rs.getString("name"));
+                    item.setMonney(rs.getFloat("monney"));
+                    item.setDescription(rs.getString("description"));
+                    item.setImg(rs.getString("img"));
+                    item.setUrl("https://www.youtube.com/embed/"+rs.getString("url"));
+                    item.setRank(rs.getInt("rank"));
+                    item.setC_id(rs.getInt("c_id"));
+                    item.setActive(rs.getBoolean("active"));
+                    pbc.add(item);
+                }
+            }
+            con.close();
+        } catch (Exception e) {
+        }
+        return pbc;
+    }
+    
+     public ArrayList<Products> getProductByCate(int c_id) {
         ArrayList<Products> pbc = new ArrayList<>();
         try {
             con = getConnection();
@@ -97,7 +128,7 @@ public class ProductsModel extends DataAccessHelper {
                     item.setMonney(rs.getFloat("monney"));
                     item.setDescription(rs.getString("description"));
                     item.setImg(rs.getString("img"));
-                    item.setUrl(rs.getString("url"));
+                    item.setUrl("https://www.youtube.com/embed/"+rs.getString("url"));
                     item.setRank(rs.getInt("rank"));
                     item.setC_id(rs.getInt("c_id"));
                     item.setActive(rs.getBoolean("active"));

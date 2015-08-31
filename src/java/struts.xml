@@ -6,7 +6,7 @@
     <!-- Configuration for the default package. -->
     <package name="default" extends="struts-default">
         
-        <action name="viewProduct" class="controller.ProductActionSupport">
+        <action name="Products" class="controller.ProductActionSupport">
             <result name="success">/index.jsp</result>
             <result name="error">/404.html</result>
         </action>
@@ -41,6 +41,10 @@
         
         <action name="Details" class="controller.DetailsActionSupport">
             <result name="success">/product-details.jsp</result>         
+        </action>
+         <action name="Categories" class="controller.CategoriesActionSupport" >
+            <result name="success">/index.jsp</result>
+            <result name="error">/404.html</result>
         </action>
     </package>
 </struts>

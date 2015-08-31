@@ -13,7 +13,6 @@
 
     <body>
         <%@include file="header.jsp" %>
-
         <section>
             <div class="container">
                 <div class="row">
@@ -60,7 +59,8 @@
                                         <b><h1><s:property value="name"/></h1></b>
                                         <s:hidden value="p_id"/>
                                         <span>
-                                            <span>US $<s:property value="monney"/></span>
+                                            <span>$<s:property value="monney"/></span>
+                                            
                                             <button type="button" class="btn btn-fefault cart">
                                                 <i class="fa fa-shopping-cart"></i>
                                                 Add to cart
@@ -86,26 +86,28 @@
                             <br/>
                             <br/>
                         </div>
-                        <s:label name="count"></s:label>
-                        <div class="recommended_items"><!--recommended_items-->
-                            <h2 class="title text-center">recommended items</h2>
+                            <div class="recommended_items"><!--recommended_items-->
+                                <h2 class="title text-center">recommended items</h2>
 
-                            <div id="recommended-item-carousel" class="carousel slide" data-ride="carousel">
-                                <div class="carousel-inner">
-                                    <div class="item active">
+                                <div id="recommended-item-carousel" class="carousel slide" data-ride="carousel">
+                                    <div class="carousel-inner">
+                                        <div class="item active">
                                         <s:iterator value="products">
                                             <div class="col-sm-4">
                                                 <div class="product-image-wrapper">
                                                     <div class="single-products">
                                                         <div class="productinfo text-center">
-                                                            <img src="<s:property value="img"/>" alt="" />
-                                                            <h2>$<s:text name="monney" /></h2>
-                                                            <p><s:text name="description" /></p>
-                                                            <button type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</button>
+                                                            <img height="200px"  src="<s:property value="img"/>" alt="" />
+                                                            <h2>$<s:property value="monney" /></h2>
+                                                            <s:url action="Details" var="detail">
+                                                                <s:param name="id">${p_id}</s:param>
+                                                                <s:param name="idct">${c_id}</s:param>
+                                                            </s:url>
+                                                            <s:a href="%{detail}" cssClass="btn btn-default add-to-cart fa fa-shopping-cart"><i class="fa fa-shopping-cart"></i>View Details</s:a>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
                                         </s:iterator>
                                     </div>
                                     <div class="item">	
@@ -114,14 +116,18 @@
                                                 <div class="product-image-wrapper">
                                                     <div class="single-products">
                                                         <div class="productinfo text-center">
-                                                            <img src="<s:property value="img"/>" alt="" />
-                                                            <h2>$<s:text name="monney" /></h2>
-                                                            <p><s:text name="description" /></p>
-                                                            <button type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</button>
+                                                            <img height="200px"  src="<s:property value="img"/>" alt="" />
+                                                            <h2>$<s:property value="monney" /></h2>
+                                                            <s:url action="Details" var="detail">
+                                                                <s:param name="id">${p_id}</s:param>
+                                                                <s:param name="idct">${c_id}</s:param>
+                                                            </s:url>
+                                                            <s:a href="%{detail}" cssClass="btn btn-default add-to-cart fa fa-shopping-cart"><i class="fa fa-shopping-cart"></i>Add to cart</s:a>
+
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
                                         </s:iterator>
                                     </div>
                                 </div>

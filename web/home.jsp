@@ -9,7 +9,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">      
-        <META HTTP-EQUIV="Refresh" CONTENT="0;URL=viewProduct.action">
+        <META HTTP-EQUIV="Refresh" CONTENT="0;URL=Products.action">
         <title>JSP Page</title>
     </head>
     <body>

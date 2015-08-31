@@ -15,6 +15,7 @@ public class CategoriesModel extends DataAccessHelper{
         Connection con;
 
     private final String GET_CATEGORIES = "select * from Categories where active=?";
+    private final String GET_CATEGORIES_BY_ID = "select * from Categories where c_id = ?";
     
     public ArrayList<Categories> getAll() {
         ArrayList<Categories> list = new ArrayList<>();
@@ -22,6 +23,27 @@ public class CategoriesModel extends DataAccessHelper{
             con = getConnection();
             PreparedStatement ps = con.prepareStatement(GET_CATEGORIES);
             ps.setBoolean(1, true);
+            ResultSet rs = ps.executeQuery();
+            if (rs != null) {
+                while (rs.next()) {
+                    Categories item = new Categories();
+                    item.setC_id(rs.getInt("c_id"));
+                    item.setName(rs.getString("name"));
+                    list.add(item);
+                }
+            }
+            con.close();
+        } catch (Exception e) {
+        }
+        return list;
+    }
+    
+    public ArrayList<Categories> getById(int id) {
+        ArrayList<Categories> list = new ArrayList<>();
+        try {
+            con = getConnection();
+            PreparedStatement ps = con.prepareStatement(GET_CATEGORIES_BY_ID);
+            ps.setInt(1, id);
             ResultSet rs = ps.executeQuery();
             if (rs != null) {
                 while (rs.next()) {
