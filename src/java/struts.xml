@@ -60,6 +60,7 @@
         <action name="CheckOut" class="controller.CheckOutActionSupport" >
             <result name="none">/home.jsp</result>
             <result name="rlr">/checkout.jsp</result>
+            <result name="success">/success.jsp</result>
             <result name="error">/404.html</result>
         </action>
         <action name="display" class="controller.CheckOutActionSupport" method="display">

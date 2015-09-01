@@ -56,69 +56,64 @@ public class AddToCardActionSupport extends ActionSupport implements SessionAwar
     @Override
     public String execute() throws Exception {
         HttpServletRequest request = (HttpServletRequest) ActionContext.getContext().get(ServletActionContext.HTTP_REQUEST);
-        try {
-            ProductsModel pm;
-            if (sessionMap.containsKey("car")) {
-                pm = new ProductsModel();
-                quantitys = (List<Quantity>) sessionMap.get("car");
+        ProductsModel pm;
+        if (sessionMap.containsKey("car")) {
+            pm = new ProductsModel();
+            quantitys = (List<Quantity>) sessionMap.get("car");
 
-                for (int i = 0; i < quantitys.size(); i++) {
-                    if (quantitys.get(i).getP_id() == Integer.parseInt(request.getParameter("id"))) {
-                        DecimalFormat df = new DecimalFormat("###.##");
-                        Quantity item = new Quantity();
-                        int n = quantitys.get(i).getNumber() + 1;
-                        item.setNumber(n);
-                        Products p = pm.getProductByID(Integer.parseInt(request.getParameter("id")));
-                        item.setProducts(p);
-                        float pr = p.getMonney() * n;
-                        item.setPrice(Float.parseFloat(df.format(pr)));
-                        item.setP_id(p.getP_id());
-                        quantitys.set(i, item);
-                        sessionMap.put("car", quantitys);
-                        total = 0;
-                        for (int j = 0; j < quantitys.size(); j++) {
+            for (int i = 0; i < quantitys.size(); i++) {
+                if (quantitys.get(i).getP_id() == Integer.parseInt(request.getParameter("id"))) {
+                    DecimalFormat df = new DecimalFormat("###.##");
+                    Quantity item = new Quantity();
+                    int n = quantitys.get(i).getNumber() + 1;
+                    item.setNumber(n);
+                    Products p = pm.getProductByID(Integer.parseInt(request.getParameter("id")));
+                    item.setProducts(p);
+                    float pr = p.getMonney() * n;
+                    item.setPrice(Float.parseFloat(df.format(pr)));
+                    item.setP_id(p.getP_id());
+                    quantitys.set(i, item);
+                    sessionMap.put("car", quantitys);
+                    total = 0;
+                    for (int j = 0; j < quantitys.size(); j++) {
 
-                            total = Float.parseFloat(df.format(total + quantitys.get(j).getPrice()));
-                        }
-                        sessionMap.put("total", total);
-                        return SUCCESS;
+                        total = Float.parseFloat(df.format(total + quantitys.get(j).getPrice()));
                     }
+                    sessionMap.put("total", total);
+                    return SUCCESS;
                 }
-                DecimalFormat df = new DecimalFormat("###.##");
-                Quantity item = new Quantity();
-                item.setNumber(1);
-                Products p = pm.getProductByID(Integer.parseInt(request.getParameter("id")));
-                item.setProducts(p);
-                item.setPrice(p.getMonney());
-                item.setP_id(p.getP_id());
-                quantitys.add(item);
-                sessionMap.put("car", quantitys);
-                for (int j = 0; j < quantitys.size(); j++) {
-                    total = Float.parseFloat(df.format(total + quantitys.get(j).getPrice()));
-                }
-                sessionMap.put("total", total);
-                return SUCCESS;
-            } else {
-                DecimalFormat df = new DecimalFormat("###.##");
-                quantitys = new ArrayList<>();
-                pm = new ProductsModel();
-                Quantity item = new Quantity();
-                item.setNumber(1);
-                Products p = pm.getProductByID(Integer.parseInt(request.getParameter("id")));
-                item.setProducts(p);
-                item.setPrice(p.getMonney());
-                item.setP_id(p.getP_id());
-                quantitys.add(item);
-                sessionMap.put("car", quantitys);
-                for (int j = 0; j < quantitys.size(); j++) {
-                    total = Float.parseFloat(df.format(total + quantitys.get(j).getPrice()));
-                }
-                sessionMap.put("total", total);
-                return SUCCESS;
             }
-
-        } catch (Exception ex) {
-            return ERROR;
+            DecimalFormat df = new DecimalFormat("###.##");
+            Quantity item = new Quantity();
+            item.setNumber(1);
+            Products p = pm.getProductByID(Integer.parseInt(request.getParameter("id")));
+            item.setProducts(p);
+            item.setPrice(p.getMonney());
+            item.setP_id(p.getP_id());
+            quantitys.add(item);
+            sessionMap.put("car", quantitys);
+            for (int j = 0; j < quantitys.size(); j++) {
+                total = Float.parseFloat(df.format(total + quantitys.get(j).getPrice()));
+            }
+            sessionMap.put("total", total);
+            return SUCCESS;
+        } else {
+            DecimalFormat df = new DecimalFormat("###.##");
+            quantitys = new ArrayList<>();
+            pm = new ProductsModel();
+            Quantity item = new Quantity();
+            item.setNumber(1);
+            Products p = pm.getProductByID(Integer.parseInt(request.getParameter("id")));
+            item.setProducts(p);
+            item.setPrice(p.getMonney());
+            item.setP_id(p.getP_id());
+            quantitys.add(item);
+            sessionMap.put("car", quantitys);
+            for (int j = 0; j < quantitys.size(); j++) {
+                total = Float.parseFloat(df.format(total + quantitys.get(j).getPrice()));
+            }
+            sessionMap.put("total", total);
+            return SUCCESS;
         }
     }
 

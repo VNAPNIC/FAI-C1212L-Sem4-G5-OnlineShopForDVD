@@ -20,9 +20,9 @@ public class HistoryOderModel extends DataAccessHelper {
 
     Connection con;
 
-    private static final String INSERT_ODER = "insert into HistoryOder values (?,?,?,?,?,?,?,?,?,?,?)";
+    private static final String INSERT_ODER = "insert into HistoryOder(dateoder) values (?)";
 
-    public boolean addNewOder(HistoryOder ho) {
+    public boolean addNewOder() {
         boolean check = false;
         try {
             con = getConnection();
@@ -32,16 +32,6 @@ public class HistoryOderModel extends DataAccessHelper {
                 
                 PreparedStatement ps = con.prepareStatement(INSERT_ODER);
                 ps.setString(1, dateFormat.format(date));
-                ps.setString(2, ho.getUser());
-                ps.setInt(3, ho.getQ_id());
-                ps.setInt(4, ho.getPt_id());
-                ps.setInt(5, ho.getAmount());
-                ps.setFloat(6, ho.getMonney());
-                ps.setFloat(7, ho.getShip());
-                ps.setBoolean(8, false);
-                ps.setString(9, ho.getNameship());
-                ps.setString(10, ho.getAddressship());
-                ps.setString(11, ho.getPhoneship());
                 int rs = ps.executeUpdate();
                 if (rs > 0) {
                     check = true;

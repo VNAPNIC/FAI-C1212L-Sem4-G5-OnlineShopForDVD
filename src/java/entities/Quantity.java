@@ -14,7 +14,7 @@ public class Quantity {
     int number;
     float price;
     int p_id;
-    
+    int ho_id;
     Products products;
     public int getQ_id() {
         return q_id;
@@ -48,6 +48,16 @@ public class Quantity {
     public void setP_id(int p_id) {
         this.p_id = p_id;
     }
+
+    public int getHo_id() {
+        return ho_id;
+    }
+
+    public void setHo_id(int ho_id) {
+        this.ho_id = ho_id;
+    }
+    
+    
 
     public Products getProducts() {
         return products;

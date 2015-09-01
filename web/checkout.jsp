@@ -44,10 +44,10 @@
                                     </s:url>
                                     <s:a cssClass="btn btn-primary" href="%{cancelorders}">Cancel Orders</s:a>
 
-                                    <s:url action="CheckOut" var="checkout">
-                                        <s:param name="active">checkout</s:param>
+                                    <s:url action="CheckOut" var="co">
+                                        <s:param name="active">co</s:param>
                                     </s:url>    
-                                    <s:a cssClass="btn btn-primary" href="%{checkout}">Check Out</s:a>
+                                    <s:a cssClass="btn btn-primary" href="%{co}">Check Out</s:a>
                                     </div>
                                 </div>
 
