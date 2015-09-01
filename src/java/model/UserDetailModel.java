@@ -19,7 +19,7 @@ public class UserDetailModel extends DataAccessHelper{
     private static final String GET_PROFILE =  "select * from UserDetail where [user]=?";
     private static final String REGISTER = "insert into UserDetail values (?,?,?,?,?,?,?)";
     
-    protected UserDetail getProfile(String user)
+    public UserDetail getProfile(String user)
     {
         UserDetail item = new UserDetail();
          MonneyOfUserModel moum = new MonneyOfUserModel();

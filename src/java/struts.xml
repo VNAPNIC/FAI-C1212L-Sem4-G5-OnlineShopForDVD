@@ -58,9 +58,12 @@
         </action>
         
         <action name="CheckOut" class="controller.CheckOutActionSupport" >
-            <result name="success">/home.jsp</result>
+            <result name="none">/home.jsp</result>
             <result name="rlr">/checkout.jsp</result>
             <result name="error">/404.html</result>
+        </action>
+        <action name="display" class="controller.CheckOutActionSupport" method="display">
+            <result name="none">/checkout.jsp</result>
         </action>
     </package>
 </struts>

@@ -18,115 +18,92 @@
             <div class="container">
                 <div class="breadcrumbs">
                     <ol class="breadcrumb">
-                        <c:choose> 
-                            <c:when test="${empty sessionScope['login']}">
-                                <li><%
-                                    response.sendRedirect("login.jsp");
-                                    %> </li>
-                                </c:when>
-                                <c:otherwise>
-                                <li><a href="home.jsp">Home</a></li>
-                                </c:otherwise>
-                            </c:choose>
-                        <li class="active">Check out</li>
-                    </ol>
-                </div><!--/breadcrums-->
+                        <s:if test="#session.car == null || #session.login == null">
+                            <p><h1>Please sign in to make a payment -> &nbsp;&nbsp;&nbsp;<a href="login.jsp"><li class="fa fa-lock"></li> Sign in</a></h1></p>
+                                    </s:if>
+                                    <s:else>
+                            <li><a href="home.jsp">Home</a></li>
+                            <li class="active">Check out</li>
+                        </ol>
+                    </div><!--/breadcrums-->
 
-                <div class="step-one">
-                    <h2 class="heading">Step1</h2>
-                </div>
-                <div class="checkout-options">
-                    <h3>New User</h3>
-                    <p>Checkout options</p>
-                    <ul class="nav">
-                        <li>
-                            <label><input type="checkbox"> Register Account</label>
-                        </li>
-                        <li>
-                            <label><input type="checkbox"> Guest Checkout</label>
-                        </li>
-                        <li>
-                            <a href=""><i class="fa fa-times"></i>Cancel</a>
-                        </li>
-                    </ul>
-                </div><!--/checkout-options-->
+                    <div class="register-req">
+                        <p>Note that if you send to others in the house of information, not the empty</p>
+                    </div><!--/register-req-->
 
-                <div class="register-req">
-                    <p>Please use Register And Checkout to easily get access to your order history, or use Checkout as Guest</p>
-                </div><!--/register-req-->
-
-                <div class="shopper-informations">
-                    <div class="row">
-                        <div class="col-sm-3">
-                            <div class="shopper-info">
-                                <p>Shopper Information</p>
-                                <form>
-                                    <input type="text" placeholder="Display Name">
-                                    <input type="text" placeholder="User Name">
-                                    <input type="password" placeholder="Password">
-                                    <input type="password" placeholder="Confirm password">
-                                </form>
-                                <a class="btn btn-primary" href="">Get Quotes</a>
-                                <a class="btn btn-primary" href="">Continue</a>
-                            </div>
-                        </div>
-                        <div class="col-sm-5 clearfix">
-                            <div class="bill-to">
-                                <p>Bill To</p>
-                                <div class="form-one">
+                    <div class="shopper-informations">
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <div class="shopper-info">
+                                    <p>Receiver</p>
                                     <form>
-                                        <input type="text" placeholder="Company Name">
-                                        <input type="text" placeholder="Email*">
-                                        <input type="text" placeholder="Title">
-                                        <input type="text" placeholder="First Name *">
-                                        <input type="text" placeholder="Middle Name">
-                                        <input type="text" placeholder="Last Name *">
-                                        <input type="text" placeholder="Address 1 *">
-                                        <input type="text" placeholder="Address 2">
-                                    </form>
+                                        <s:textfield type="text" placeholder="Name"></s:textfield>
+                                        </form>
+                                    <s:url action="CheckOut" var="cancelorders">
+                                        <s:param name="active">cancelorders</s:param>
+                                    </s:url>
+                                    <s:a cssClass="btn btn-primary" href="%{cancelorders}">Cancel Orders</s:a>
+
+                                    <s:url action="CheckOut" var="checkout">
+                                        <s:param name="active">checkout</s:param>
+                                    </s:url>    
+                                    <s:a cssClass="btn btn-primary" href="%{checkout}">Check Out</s:a>
+                                    </div>
                                 </div>
-                                <div class="form-two">
-                                    <form>
-                                        <input type="text" placeholder="Zip / Postal Code *">
-                                        <select>
-                                            <option>-- Country --</option>
-                                            <option>United States</option>
-                                            <option>Bangladesh</option>
-                                            <option>UK</option>
-                                            <option>India</option>
-                                            <option>Pakistan</option>
-                                            <option>Ucrane</option>
-                                            <option>Canada</option>
-                                            <option>Dubai</option>
-                                        </select>
-                                        <select>
-                                            <option>-- State / Province / Region --</option>
-                                            <option>United States</option>
-                                            <option>Bangladesh</option>
-                                            <option>UK</option>
-                                            <option>India</option>
-                                            <option>Pakistan</option>
-                                            <option>Ucrane</option>
-                                            <option>Canada</option>
-                                            <option>Dubai</option>
-                                        </select>
-                                        <input type="password" placeholder="Confirm password">
-                                        <input type="text" placeholder="Phone *">
-                                        <input type="text" placeholder="Mobile Phone">
-                                        <input type="text" placeholder="Fax">
-                                    </form>
+
+                                <div class="col-sm-5 clearfix">
+
+                                    <div class="bill-to">
+                                        <p>&nbsp;</p>
+                                        <div class="form-one">
+                                            <form>
+                                            <s:textfield type="text" placeholder="Address"></s:textfield>
+                                            </form>
+                                        </div>
+                                        <div class="form-two">
+                                            <form>
+                                            <s:textfield type="number" placeholder="Phone" ></s:textfield>
+                                            </form>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
+                                <div class="col-sm-4">
+                                    <div class="order-message">
+                                        <p>Account</p>
+                                        <table>
+                                        <s:iterator value="ud">
+                                            <tr>
+                                                <td><b>Name:</b> </td>
+                                                <td><s:property value="name"></s:property></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><b>phone:</b></td>
+                                                    <td><s:property value="phone"></s:property></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><b>address:</b></td>
+                                                    <td><s:property value="address"></s:property></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><b>bod:</b></td>
+                                                    <td><s:property value="bod"></s:property></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><b>email:</b></td>
+                                                    <td><s:property value="email"></s:property></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><b>identity_card: &nbsp;&nbsp;&nbsp;</b></td>
+                                                    <td><s:property value="identity_card"></s:property></td>
+                                                </tr>
+                                        </s:iterator>
+                                    </table>
+                                </div>	
+                            </div>					
                         </div>
-                        <div class="col-sm-4">
-                            <div class="order-message">
-                                <p>Shipping Order</p>
-                                <textarea name="message"  placeholder="Notes about your order, Special Notes for Delivery" rows="16"></textarea>
-                                <label><input type="checkbox"> Shipping to bill address</label>
-                            </div>	
-                        </div>					
                     </div>
-                </div>
+                </s:else>
+
                 <div class="review-payment">
                     <h2>Review & Payment</h2>
                 </div>
@@ -159,15 +136,6 @@
                                             <p>$<s:property value="products.monney"/></p>
                                         </td>
                                         <td class="cart_quantity">
-                                            <s:url action="Quantity" var="down">
-                                                <s:param name="id">${products.p_id}</s:param>
-                                                <s:param name="active">down</s:param>
-                                            </s:url>
-                                            <s:url action="Quantity" var="up">
-                                                <s:param name="id">${products.p_id}</s:param>
-                                                <s:param name="active">up</s:param>
-                                            </s:url>
-
                                             <div class="cart_quantity_button">
                                                 <s:a cssClass="cart_quantity_up" href="#"> + </s:a>
                                                 <input readonly class="cart_quantity_input" type="text" name="quantity" value="<s:property value="number"/>" autocomplete="off" size="2">
@@ -178,10 +146,6 @@
                                                 <p class="cart_total_price">$<s:property value="price"/></p>
                                         </td>
                                         <td class="cart_delete">
-                                            <s:url action="Quantity" var="remove">
-                                                <s:param name="id">${products.p_id}</s:param>
-                                                <s:param name="active">remove</s:param>
-                                            </s:url>
                                             <s:a cssClass="cart_quantity_delete" href="#"><i class="fa fa-times"></i></s:a>
                                             </td>
                                         </tr>
@@ -213,7 +177,7 @@
                         </tbody>
                     </table>
                 </div>
-                
+
             </div>
         </section> <!--/#cart_items-->
 

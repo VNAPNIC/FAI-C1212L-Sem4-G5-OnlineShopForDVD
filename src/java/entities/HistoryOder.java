@@ -26,6 +26,22 @@ public class HistoryOder {
     String phoneship;
     boolean active;
 
+    public HistoryOder(String dateoder, String user, int q_id, int pt_id, int amount, float monney, float ship, String nameship, String addressship, String phoneship, boolean active) {
+        this.dateoder = dateoder;
+        this.user = user;
+        this.q_id = q_id;
+        this.pt_id = pt_id;
+        this.amount = amount;
+        this.monney = monney;
+        this.ship = ship;
+        this.nameship = nameship;
+        this.addressship = addressship;
+        this.phoneship = phoneship;
+        this.active = active;
+    }
+    
+    
+
     public int getHo_id() {
         return ho_id;
     }
