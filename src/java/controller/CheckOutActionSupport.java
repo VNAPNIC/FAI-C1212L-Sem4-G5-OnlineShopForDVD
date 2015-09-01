@@ -5,11 +5,11 @@
  */
 package controller;
 
+import static com.opensymphony.xwork2.Action.NONE;
+import static com.opensymphony.xwork2.Action.SUCCESS;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import entities.UserDetail;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import model.HistoryOderModel;
@@ -24,7 +24,7 @@ import org.apache.struts2.interceptor.SessionAware;
 public class CheckOutActionSupport extends ActionSupport implements SessionAware {
 
     private Map<String, Object> sessionMap;
-    private static final String RLR = "rlr";
+    private static final String RLR = "mco";
     private UserDetail ud;
 
     public UserDetail getUd() {
@@ -40,31 +40,35 @@ public class CheckOutActionSupport extends ActionSupport implements SessionAware
 
     @Override
     public String execute() throws Exception {
-
-        HttpServletRequest request = (HttpServletRequest) ActionContext.getContext().get(ServletActionContext.HTTP_REQUEST);
-        if (request.getParameter("active").equals(RLR)) {
-            if (sessionMap.containsKey("login")) {
-                UserDetailModel udm = new UserDetailModel();
-                ud = udm.getProfile(sessionMap.get("login").toString());
-                HistoryOderModel hom = new HistoryOderModel();
-                if (hom.addNewOder()) {
-                    return RLR;
-                } else {
-                   return NONE;
+        try {
+            HttpServletRequest request = (HttpServletRequest) ActionContext.getContext().get(ServletActionContext.HTTP_REQUEST);
+            if (request.getParameter("active").equals(RLR)) {
+                if (sessionMap.containsKey("login")) {
+                    UserDetailModel udm = new UserDetailModel();
+                    ud = udm.getProfile(sessionMap.get("login").toString());
+                    HistoryOderModel hom = new HistoryOderModel();
+                    if (hom.addNewOder()) {
+                        return RLR;
+                    } else {
+                        return NONE;
+                    }
                 }
+                return RLR;
             }
-            return RLR;
-        }
-        if (request.getParameter("active").equals("cancelorders")) {
-            sessionMap.remove("car");
-            return NONE;
-        }
+            
+            if (request.getParameter("active").equals("cancelorders")) {
+                sessionMap.remove("car");
+                return NONE;
+            }
 
-        if (request.getParameter("active").equals("co")) {
-            return SUCCESS;
+            if (request.getParameter("active").equals("co")) {
+                return SUCCESS;
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
         }
+        return NONE;
 
-        return SUCCESS;
     }
 
     @Override

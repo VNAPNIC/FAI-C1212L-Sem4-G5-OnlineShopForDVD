@@ -124,11 +124,11 @@
                                         </s:else>
                                 </ul>
 
-                                <s:url action="CheckOut" var="checkout">
-                                    <s:param name="active">rlr</s:param>
+                                <s:url action="CheckOut" var="mco">
+                                    <s:param name="active">mco</s:param>
                                 </s:url>
                                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                <s:a cssClass="btn btn-default check_out" href="%{checkout}">Check Out</s:a>
+                                <s:a cssClass="btn btn-default check_out" href="%{mco}">Check Out</s:a>
                                 </div>
                             </div>
                     </div>
