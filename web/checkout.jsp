@@ -18,7 +18,7 @@
             <div class="container">
                 <div class="breadcrumbs">
                     <ol class="breadcrumb">
-                        <s:if test="#session.car == null || #session.login == null">
+                        <s:if test="#session.login == null">
                             <p><h1>Please sign in to make a payment -> &nbsp;&nbsp;&nbsp;<a href="login.jsp"><li class="fa fa-lock"></li> Sign in</a></h1></p>
                                     </s:if>
                                     <s:else>
@@ -33,78 +33,81 @@
 
                     <div class="shopper-informations">
                         <div class="row">
-                            <div class="col-sm-3">
-                                <div class="shopper-info">
-                                    <p>Receiver</p>
-                                    <form>
-                                        <s:textfield type="text" placeholder="Name"></s:textfield>
-                                        </form>
-                                    <s:url action="CheckOut" var="cancelorders">
-                                        <s:param name="active">cancelorders</s:param>
-                                    </s:url>
-                                    <s:a cssClass="btn btn-primary" href="%{cancelorders}">Cancel Orders</s:a>
+                            <div class="col-sm-2">
 
-                                    <s:url action="CheckOut" var="co">
-                                        <s:param name="active">co</s:param>
-                                    </s:url>    
-                                    <s:a cssClass="btn btn-primary" href="%{co}">Check Out</s:a>
-                                    </div>
-                                </div>
-
-                                <div class="col-sm-5 clearfix">
-
-                                    <div class="bill-to">
-                                        <p>&nbsp;</p>
-                                        <div class="form-one">
-                                            <form>
-                                            <s:textfield type="text" placeholder="Address"></s:textfield>
-                                            </form>
-                                        </div>
-                                        <div class="form-two">
-                                            <form>
-                                            <s:textfield type="number" placeholder="Phone" ></s:textfield>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-4">
-                                    <div class="order-message">
-                                        <p>Account</p>
-                                        <table>
-                                        <s:iterator value="ud">
+                            </div>
+                            <div class="col-sm-5">
+                                <p>Account</p>
+                                <table>
+                                    <s:iterator value="ud">
+                                        <tr>
+                                            <td><b>Name:</b> </td>
+                                            <td><s:property value="name"></s:property></td>
+                                            </tr>
                                             <tr>
-                                                <td><b>Name:</b> </td>
-                                                <td><s:property value="name"></s:property></td>
+                                                <td><b>phone:</b></td>
+                                                <td><s:property value="phone"></s:property></td>
+                                            </tr>
+                                            <tr>
+                                                <td><b>address:</b></td>
+                                                <td><s:property value="address"></s:property></td>
+                                            </tr>
+                                            <tr>
+                                                <td><b>bod:</b></td>
+                                                <td><s:property value="bod"></s:property></td>
+                                            </tr>
+                                            <tr>
+                                                <td><b>email:</b></td>
+                                                <td><s:property value="email"></s:property></td>
+                                            </tr>
+                                            <tr>
+                                                <td><b>identity_card: &nbsp;&nbsp;&nbsp;</b></td>
+                                                <td><s:property value="identity_card"></s:property></td>
+                                            </tr>
+                                    </s:iterator>
+                                </table>
+                            </div>
+
+
+                            <div class="col-sm-4">
+                                <div class="order-message">
+
+                                    <p>Receiver</p>
+                                    <s:form action="toCar">
+                                        <table>
+                                            <tr>
+
+                                                <td> <s:textfield label="Name receiver" type="text" placeholder="Name" name="nameShip"></s:textfield></td>
                                                 </tr>
                                                 <tr>
-                                                    <td><b>phone:</b></td>
-                                                    <td><s:property value="phone"></s:property></td>
+
+                                                    <td><s:textfield type="text" label="Address receiver" placeholder="Address" name="addressShip"></s:textfield></td>
                                                 </tr>
                                                 <tr>
-                                                    <td><b>address:</b></td>
-                                                    <td><s:property value="address"></s:property></td>
+
+                                                    <td> <s:textfield type="number" label="Phone receiver" placeholder="Phone" name="phoShip" ></s:textfield></td>
                                                 </tr>
                                                 <tr>
-                                                    <td><b>bod:</b></td>
-                                                    <td><s:property value="bod"></s:property></td>
+                                                    <td> 
+                                                    <s:submit cssClass="btn btn-primary" value="Check Out"></s:submit>
+                                                    </td>
                                                 </tr>
-                                                <tr>
-                                                    <td><b>email:</b></td>
-                                                    <td><s:property value="email"></s:property></td>
-                                                </tr>
-                                                <tr>
-                                                    <td><b>identity_card: &nbsp;&nbsp;&nbsp;</b></td>
-                                                    <td><s:property value="identity_card"></s:property></td>
-                                                </tr>
-                                        </s:iterator>
-                                    </table>
+                                            </table>
+                                    </s:form>
                                 </div>	
                             </div>					
                         </div>
                     </div>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <s:url action="CheckOut" var="cancelorders">
+                        <s:param name="active">cancelorders</s:param>
+                    </s:url>
+                    <s:a cssClass="btn btn-primary" href="%{cancelorders}">Cancel Orders</s:a>
                 </s:else>
 
                 <div class="review-payment">
+
+                    <hr />
                     <h2>Review & Payment</h2>
                 </div>
 
