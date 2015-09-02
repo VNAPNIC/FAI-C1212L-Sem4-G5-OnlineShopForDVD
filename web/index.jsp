@@ -76,7 +76,7 @@
                                 </s:iterator>
                             </div><!--/category-products-->
                             <div class="text-center" ><!--shipping-->
-                                <h2>Hot Products</h2>
+                                <h2>TOP view products</h2>
                                 <s:iterator value="products">
                                     <div class="panel panel-default">
                                         <s:url action="Details" var="d">
