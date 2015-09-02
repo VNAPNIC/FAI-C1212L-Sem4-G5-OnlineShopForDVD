@@ -65,12 +65,13 @@ public class SuccessActionSupport extends ActionSupport implements SessionAware 
     public String execute() throws Exception {
         if (sessionMap.containsKey("login") && sessionMap.containsKey("car") && sessionMap.containsKey("total")) {
             HistoryOderModel hom;
-            
+
             String user = sessionMap.get("login").toString();
-            List<Quantity> objs = (List<Quantity>) sessionMap.get("car");
-            
+            List<Quantity> objs;
+            objs = (List<Quantity>) sessionMap.get("car");
+
             int amount = 0;
-            
+
             for (int i = 0; i < objs.size(); i++) {
                 amount += objs.get(i).getNumber();
             }
@@ -88,24 +89,20 @@ public class SuccessActionSupport extends ActionSupport implements SessionAware 
 
             hom = new HistoryOderModel();
             if (hom.UpdateOder(item)) {
-                
+
                 QuantityModel qm;
-                for (int i = 0; i < objs.size(); i++) {
-                    try {
-                        Quantity q = new Quantity();
-                        q.setNumber(objs.get(i).getNumber());
-                        q.setPrice(objs.get(i).getPrice());
-                        q.setP_id(objs.get(i).getP_id());
-                        q.setHo_id(objs.get(i).getHo_id());
-                        qm = new QuantityModel();
-                        qm.AddQ(q);
-                    } catch (Exception ex) {
-                        return ERROR;
-                    }
+                objs = (List<Quantity>) sessionMap.get("car");
+                hom = new HistoryOderModel();             
+                qm = new QuantityModel();
+                
+                if (qm.AddQ(objs, hom.getTOP1())) {
+                    sessionMap.remove("total");
+                    sessionMap.remove("car");
+                    return SUCCESS;
+                } else {
+                    return ERROR;
                 }
-                return SUCCESS;
             }
-            return SUCCESS;
         }
         HistoryOderModel hom;
         hom = new HistoryOderModel();

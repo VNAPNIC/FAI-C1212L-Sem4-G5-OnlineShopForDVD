@@ -95,7 +95,7 @@ window.onload=GetCount;//call when everything has loaded
 </center>
 <div class="buttons">
 <div class="tab">
-<a href="#" id="contact"><span><img src="images/contactus_icon.png" alt="Contact Us" /></span>Contact Us</a>
+    <a href="contact-us.jsp" style="margin-right: 4%;"><span><img src="images/contactus_icon.png" alt="Contact Us" /></span>Contact Us</a>
 <a href="home.jsp" id="subscribe"><center>Home Back </center></a>
 </div>
 <div class="share"><h1>&nbsp;&nbsp;&nbsp;&nbsp;</h1><span class="share_icons">

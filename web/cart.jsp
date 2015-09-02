@@ -27,11 +27,11 @@
                         <thead>
                             <tr class="cart_menu">
                                 <td class="image">Item</td>
-                                <td class="description"></td>
+                                <td class="description">Description</td>
                                 <td class="price">Price</td>
                                 <td class="quantity">Quantity</td>
                                 <td class="total">Total</td>
-                                <td></td>
+                                <td>Remove</td>
                             </tr>
                         </thead>
                         <tbody>
@@ -39,11 +39,12 @@
                                 <s:iterator value="#session.car" status="stat" var="ride">
 
                                     <tr>
-                                        <td class="cart_product">
-                                            <a href=""><img src="<s:property value="products.img"/>" alt="" /></a>
+                                        <td class="cart_product" style="margin-right: 10%;">
+                                           
+                                            <a href=""><img height="150" width="100" src="<s:property value="products.img"/>" alt="" /></a>
                                         </td>
                                         <td class="cart_description">
-                                            <h4><a href=""><s:property value="products.name"/></a></h4>
+                                             <h4><a href=""><s:property value="products.name"/></a></h4>
                                             <p>Web ID: <s:property value="q_id"/></p>
                                         </td>
                                         <td class="cart_price">

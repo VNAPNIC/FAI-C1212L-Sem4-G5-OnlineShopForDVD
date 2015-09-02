@@ -116,11 +116,10 @@
                         <thead>
                             <tr class="cart_menu">
                                 <td class="image">Item</td>
-                                <td class="description"></td>
+                                <td class="description">Description</td>
                                 <td class="price">Price</td>
                                 <td class="quantity">Quantity</td>
                                 <td class="total">Total</td>
-                                <td></td>
                             </tr>
                         </thead>
                         <tbody>
@@ -128,8 +127,8 @@
                                 <s:iterator value="#session.car" status="stat" var="ride">
 
                                     <tr>
-                                        <td class="cart_product">
-                                            <a href=""><img src="<s:property value="products.img"/>" alt="" /></a>
+                                        <td class="cart_product" style="margin-right: 10%;">
+                                            <a href=""><img height="150" width="100" src="<s:property value="products.img"/>" alt="" /></a>
                                         </td>
                                         <td class="cart_description">
                                             <h4><a href=""><s:property value="products.name"/></a></h4>
@@ -140,18 +139,14 @@
                                         </td>
                                         <td class="cart_quantity">
                                             <div class="cart_quantity_button">
-                                                <s:a cssClass="cart_quantity_up" href="#"> + </s:a>
+                                               
                                                 <input readonly class="cart_quantity_input" type="text" name="quantity" value="<s:property value="number"/>" autocomplete="off" size="2">
-                                                <s:a cssClass="cart_quantity_down" href="#"> - </s:a >
+                                             
                                                 </div>
                                             </td>
                                             <td class="cart_total">
                                                 <p class="cart_total_price">$<s:property value="price"/></p>
                                         </td>
-                                        <td class="cart_delete">
-                                            <s:a cssClass="cart_quantity_delete" href="#"><i class="fa fa-times"></i></s:a>
-                                            </td>
-                                        </tr>
                                 </s:iterator>
                             </s:if> 
                             <s:else>

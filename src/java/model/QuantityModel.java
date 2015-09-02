@@ -8,6 +8,7 @@ package model;
 import entities.Quantity;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.util.List;
 
 /**
  *
@@ -19,19 +20,23 @@ public class QuantityModel extends DataAccessHelper {
 
     private static final String ADD_QUANTITY = "insert into Quantity values (?,?,?,?)";
 
-    public boolean AddQ(Quantity q) {
+    public boolean AddQ(List<Quantity> q, int id) {
         boolean check = false;
         try {
             con = getConnection();
             if (con != null) {
-                PreparedStatement ps = con.prepareStatement(ADD_QUANTITY);
-                ps.setInt(1, q.getNumber());
-                ps.setFloat(2, q.getPrice());
-                ps.setInt(3, q.getP_id());
-                ps.setInt(4, q.getHo_id());
-                int rs = ps.executeUpdate();
-                if (rs > 0) {
-                    check = true;
+                for (int i = 0; i < q.size(); i++) {
+                    PreparedStatement ps = con.prepareStatement(ADD_QUANTITY);
+                    ps.setInt(1, q.get(i).getNumber());
+                    ps.setFloat(2, q.get(i).getPrice());
+                    ps.setInt(3, q.get(i).getP_id());
+                    ps.setInt(4, id);
+                    int rs = ps.executeUpdate();
+                    if (rs > 0) {
+                        check = true;
+                    }else{
+                        return false;
+                    }
                 }
             }
             getClose();
