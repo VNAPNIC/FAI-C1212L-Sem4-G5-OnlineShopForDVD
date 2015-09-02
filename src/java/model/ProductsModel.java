@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import entities.Products;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.List;
 
 /**
  *
@@ -23,6 +24,8 @@ public class ProductsModel extends DataAccessHelper {
     private final String GET_PRODUCT_BYID = "SELECT * FROM Products WHERE p_id = ?";
     private final String GET_PRODUCT_BY_CATE_TOP3 = "SELECT TOP 3 * FROM Products WHERE c_id = ? and active=? and p_id !=?";
     private final String GET_PRODUCT_BY_CATE = "SELECT * FROM Products WHERE c_id = ? and active=?";
+    private final String GET_HOT_TOP3 = "select TOP(3) * from "
+            + "Products p inner join ProductManager pm on p.p_id = pm.p_id ORDER  by pm.count DESC";
 
     Connection conn = null;
 
@@ -41,7 +44,7 @@ public class ProductsModel extends DataAccessHelper {
                     item.setMonney(rs.getFloat("monney"));
                     item.setDescription(rs.getString("description"));
                     item.setImg(rs.getString("img"));
-                    item.setUrl("https://www.youtube.com/embed/"+rs.getString("url"));
+                    item.setUrl("https://www.youtube.com/embed/" + rs.getString("url"));
                     item.setRank(rs.getInt("rank"));
                     item.setC_id(rs.getInt("c_id"));
                     item.setActive(rs.getBoolean("active"));
@@ -69,7 +72,7 @@ public class ProductsModel extends DataAccessHelper {
                     item.setMonney(rs.getFloat("monney"));
                     item.setDescription(rs.getString("description"));
                     item.setImg(rs.getString("img"));
-                    item.setUrl("https://www.youtube.com/embed/"+rs.getString("url"));
+                    item.setUrl("https://www.youtube.com/embed/" + rs.getString("url"));
                     item.setRank(rs.getInt("rank"));
                     item.setC_id(rs.getInt("c_id"));
                     item.setActive(rs.getBoolean("active"));
@@ -82,7 +85,7 @@ public class ProductsModel extends DataAccessHelper {
 
     }
 
-    public ArrayList<Products> getProductByCate(int c_id,int p_id) {
+    public ArrayList<Products> getProductByCate(int c_id, int p_id) {
         ArrayList<Products> pbc = new ArrayList<>();
         try {
             con = getConnection();
@@ -99,7 +102,7 @@ public class ProductsModel extends DataAccessHelper {
                     item.setMonney(rs.getFloat("monney"));
                     item.setDescription(rs.getString("description"));
                     item.setImg(rs.getString("img"));
-                    item.setUrl("https://www.youtube.com/embed/"+rs.getString("url"));
+                    item.setUrl("https://www.youtube.com/embed/" + rs.getString("url"));
                     item.setRank(rs.getInt("rank"));
                     item.setC_id(rs.getInt("c_id"));
                     item.setActive(rs.getBoolean("active"));
@@ -111,8 +114,8 @@ public class ProductsModel extends DataAccessHelper {
         }
         return pbc;
     }
-    
-     public ArrayList<Products> getProductByCate(int c_id) {
+
+    public ArrayList<Products> getProductByCate(int c_id) {
         ArrayList<Products> pbc = new ArrayList<>();
         try {
             con = getConnection();
@@ -128,7 +131,7 @@ public class ProductsModel extends DataAccessHelper {
                     item.setMonney(rs.getFloat("monney"));
                     item.setDescription(rs.getString("description"));
                     item.setImg(rs.getString("img"));
-                    item.setUrl("https://www.youtube.com/embed/"+rs.getString("url"));
+                    item.setUrl("https://www.youtube.com/embed/" + rs.getString("url"));
                     item.setRank(rs.getInt("rank"));
                     item.setC_id(rs.getInt("c_id"));
                     item.setActive(rs.getBoolean("active"));
@@ -139,5 +142,30 @@ public class ProductsModel extends DataAccessHelper {
         } catch (Exception e) {
         }
         return pbc;
+    }
+
+    public List<Products> getHot() {
+        List<Products> objs = new ArrayList<>();
+        try {
+            con = getConnection();
+            if (con != null) {
+                PreparedStatement ps = con.prepareStatement(GET_HOT_TOP3);
+                ResultSet rs = ps.executeQuery();
+                while(rs.next()) {
+                    Products item = new Products();
+                    item.setP_id(rs.getInt("p_id"));
+                    item.setName(rs.getString("name"));
+                    item.setMonney(rs.getFloat("monney"));
+                    item.setDescription(rs.getString("description"));
+                    item.setImg(rs.getString("img"));
+                    item.setC_id(rs.getInt("c_id"));
+                    objs.add(item);
+                }
+            }
+            getClose();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        return objs;
     }
 }

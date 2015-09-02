@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import model.ProductsModel;
 import model.CategoriesModel;
 import entities.Categories;
+import java.util.List;
 /**
  *
  * @author Louis DeRossi
@@ -20,6 +21,17 @@ public class ProductActionSupport extends ActionSupport {
 
     ArrayList<Products> productList = new ArrayList<>();
     ArrayList<Categories> categoriesList = new ArrayList<>();
+    List<Products>  products =  new ArrayList<>();
+
+    public List<Products> getProducts() {
+        return products;
+    }
+
+    public void setProducts(List<Products> products) {
+        this.products = products;
+    }
+
+   
 
     public ArrayList<Products> getProductList() {
         return productList;
@@ -40,8 +52,11 @@ public class ProductActionSupport extends ActionSupport {
     @Override
     public String execute() throws Exception {
         try{
-            ProductsModel pm = new ProductsModel();
+            ProductsModel pm;
+            pm = new ProductsModel();
             this.productList = pm.getList();
+            pm = new ProductsModel();
+            this.products = pm.getHot();
             CategoriesModel ct = new CategoriesModel();
             this.categoriesList = ct.getAll();
             

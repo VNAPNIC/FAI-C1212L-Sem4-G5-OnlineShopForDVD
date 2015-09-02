@@ -75,8 +75,20 @@
                                         </div>
                                 </s:iterator>
                             </div><!--/category-products-->
-                            <div class="shipping text-center"><!--shipping-->
-                                <img src="images/home/shipping.jpg" alt="" />
+                            <div class="text-center" ><!--shipping-->
+                                <h2>Hot Products</h2>
+                                <s:iterator value="products">
+                                    <div class="panel panel-default">
+                                        <s:url action="Details" var="d">
+                                            <s:param name="id">${p_id}</s:param>
+                                            <s:param name="idct">${c_id}</s:param>
+                                        </s:url>
+                                        <s:a href="%{d}"><img style="margin: 5%;" height="200px" width="150px" src="<s:property value="img"/>" alt="" /></s:a>
+                                        <h2 style="margin: 5%;"><s:property value="monney"/>$</h2>
+                                        <p><s:property value="name"/></p>
+                                    </div>
+
+                                </s:iterator>
                             </div><!--/shipping-->
 
                         </div>

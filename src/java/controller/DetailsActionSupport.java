@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import javax.servlet.http.HttpServletRequest;
 import model.CategoriesModel;
 import model.ProductsModel;
+import model.productsManagerModel;
 import org.apache.struts2.ServletActionContext;
 
 /**
@@ -21,10 +22,11 @@ import org.apache.struts2.ServletActionContext;
  * @author Louis DeRossi
  */
 public class DetailsActionSupport extends ActionSupport {
+
     Products productDetail;
     ArrayList<Categories> categoriesList = new ArrayList<>();
     ArrayList<Products> products;
-   
+
     public Products getProductDetail() {
         return productDetail;
     }
@@ -48,27 +50,29 @@ public class DetailsActionSupport extends ActionSupport {
     public void setProducts(ArrayList<Products> products) {
         this.products = products;
     }
-    
-    
 
     @Override
     public String execute() throws Exception {
         HttpServletRequest request = (HttpServletRequest) ActionContext.getContext().get(ServletActionContext.HTTP_REQUEST);
         try {
-            ProductsModel pm;
-            pm = new ProductsModel();
-            this.productDetail = pm.getProductByID(Integer.parseInt(request.getParameter("id")));
-            pm = new ProductsModel();
-            this.products = pm.getProductByCate(Integer.parseInt(request.getParameter("idct")),Integer.parseInt(request.getParameter("id")));
-           
-            CategoriesModel ct = new CategoriesModel();
-            this.categoriesList = ct.getAll();
-            
-            
+            productsManagerModel pmm = new productsManagerModel();
+            if (pmm.addView(Integer.parseInt(request.getParameter("id")))) {
+                ProductsModel pm;
+                pm = new ProductsModel();
+                this.productDetail = pm.getProductByID(Integer.parseInt(request.getParameter("id")));
+                pm = new ProductsModel();
+                this.products = pm.getProductByCate(Integer.parseInt(request.getParameter("idct")), Integer.parseInt(request.getParameter("id")));
+
+                CategoriesModel ct = new CategoriesModel();
+                this.categoriesList = ct.getAll();
+                return SUCCESS;
+            }else{
+                return ERROR;
+            }
         } catch (Exception ex) {
             ex.printStackTrace();
         }
-        return SUCCESS;
+        return ERROR;
     }
 
 }
