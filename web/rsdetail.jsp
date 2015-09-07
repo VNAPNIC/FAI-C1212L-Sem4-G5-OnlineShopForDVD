@@ -37,6 +37,8 @@
     <body>
         <%@include file="headerLR.jsp" %>
 
+
+
         <section>
             <div class="wrapper">
                 <div class="container">
@@ -53,8 +55,6 @@
 
                                         </s:if>
                                         <s:else>
-
-
                                             <td><tr><s:textfield name="ud.name" placeholder="Name"></s:textfield></tr></td>
                                             <td><tr><s:textfield name="ud.address" placeholder="Address"></s:textfield></tr></td>
                                             <td><tr><s:textfield name="ud.phone" type="number" placeholder="Phone"></s:textfield></tr></td>
@@ -63,30 +63,26 @@
                                             <td><tr><s:textfield name="identityCard" type="number"  placeholder="Identity Card"></s:textfield></tr></td>
                                             <td><tr> <s:submit id="login-button"  value="Sign up" ></s:submit></tr></td>
                                             <td><tr><s:label name="rdterror"></s:label></tr></td>
-
-
                                         </s:else>
                                     </table>
                                 </s:form>
                             </Center>
+                            <ul class="bg-bubbles">
+                                <li></li>
+                                <li></li>
+                                <li></li>
+                                <li></li>
+                                <li></li>
+                                <li></li>
+                                <li></li>
+                                <li></li>
+                                <li></li>
+                                <li></li>
+                            </ul>
 
                         </div>
-
-                        <ul class="bg-bubbles">
-                            <li></li>
-                            <li></li>
-                            <li></li>
-                            <li></li>
-                            <li></li>
-                            <li></li>
-                            <li></li>
-                            <li></li>
-                            <li></li>
-                            <li></li>
-                        </ul>
                     </div>
                 </div>
-            </div>
         </section>
         <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
 

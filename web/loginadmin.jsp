@@ -22,6 +22,16 @@
         <script src="js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
     </head>
     <body id="login">
+          <c:choose> 
+                                <c:when test="${!empty sessionScope['loginad']}">
+                                    <li><%
+                                        response.sendRedirect("mainadmin.jsp");
+                                        %> </li>
+                                </c:when>
+                                <c:otherwise>
+                                </c:otherwise>
+                            </c:choose>
+
         <div class="container">
             <s:form cssClass="form-signin" action="adlogin" method="Post">
                 <h2 class="form-signin-heading">Please sign in</h2>
@@ -32,6 +42,7 @@
             </s:form>
 
         </div> <!-- /container -->
+
         <script src="vendors/jquery-1.9.1.min.js"></script>
         <script src="bootstrap/js/bootstrap.min.js"></script>
     </body>

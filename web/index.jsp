@@ -54,7 +54,6 @@
                 </div>
             </div>
         </section><!--/slider-->
-
         <section>
             <div class="container">
                 <div class="row">
@@ -96,30 +95,38 @@
                     <div class="col-sm-9 padding-right">
                         <div class="features_items"><!--features_items-->
                             <h2 class="title text-center">PRODUCTS</h2>
-                            <s:iterator value="productList">
-                                <div class="col-sm-4">
-                                    <div class="product-image-wrapper">
-                                        <div class="single-products">
-                                            <div class="productinfo text-center">
-                                                <img height="300px" width="240px" src="<s:property value="img"/>" alt="" />
-                                                <h2><s:property value="monney"/>$</h2>
-                                                <p><s:property value="name"/></p>
-                                            </div>
-                                            <div class="product-overlay">
-                                                <div class="overlay-content">
-                                                    <p><s:property value="description"/></p>
-                                                    <s:url action="Details" var="detail">
-                                                        <s:param name="id">${p_id}</s:param>
-                                                        <s:param name="idct">${c_id}</s:param>
-                                                    </s:url>
-                                                    <s:a href="%{detail}" cssClass="btn btn-default add-to-cart">View Details</s:a>
+                            <div id="showMore">
+                                <s:iterator value="productList">
+                                    <div class="col-sm-4">
+                                        <div class="product-image-wrapper">
+                                            <div class="single-products">
+                                                <div class="productinfo text-center">
+                                                    <img height="300px" width="240px" src="<s:property value="img"/>" alt="" />
+                                                    <h2><s:property value="monney"/>$</h2>
+                                                    <p><s:property value="name"/></p>
+                                                </div>
+                                                <div class="product-overlay">
+                                                    <div class="overlay-content">
+                                                        <p><s:property value="description"/></p>
+                                                        <s:url action="Details" var="detail">
+                                                            <s:param name="id">${p_id}</s:param>
+                                                            <s:param name="idct">${c_id}</s:param>
+                                                        </s:url>
+                                                        <s:a href="%{detail}" cssClass="btn btn-default add-to-cart">View Details</s:a>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                            </s:iterator>
+                                </s:iterator>
+                            </div>
+
+                            <center>
+                                <div class="btn add-to-cart text-center" id="loadMore" style="width: 35%;background-color: #FE980F">Load more</div>
+                            </center>
+
                         </div>
+
                         <!--features_items-->
                     </div>
                 </div>
@@ -135,4 +142,16 @@
         <script src="js/price-range.js"></script>
         <script src="js/jquery.prettyPhoto.js"></script>
         <script src="js/main.js"></script>
+        <script>
+            $(function () {
+                var items = [];
+            <s:iterator value="productList">
+                items.push("<s:property value="name"></s:property>");
+            </s:iterator>
+                $("#tags").autocomplete({
+                    source: items
+                });
+            });
+        </script>
+
     </body></html>

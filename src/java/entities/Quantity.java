@@ -16,6 +16,9 @@ public class Quantity {
     int p_id;
     int ho_id;
     Products products;
+    HistoryOder ho;
+    UserDetail ud;
+    
     public int getQ_id() {
         return q_id;
     }
@@ -66,6 +69,23 @@ public class Quantity {
     public void setProducts(Products products) {
         this.products = products;
     }
+
+    public HistoryOder getHo() {
+        return ho;
+    }
+
+    public void setHo(HistoryOder ho) {
+        this.ho = ho;
+    }
+
+    public UserDetail getUd() {
+        return ud;
+    }
+
+    public void setUd(UserDetail ud) {
+        this.ud = ud;
+    }
+    
     
            
 }

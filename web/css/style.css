@@ -37,14 +37,14 @@ body :-ms-input-placeholder {
   font-weight: 300;
 }
 #login-button{
-    background: #50a3a2;
-  background: -webkit-linear-gradient(top left, #50a3a2 0%, #53e3a6 100%);
-  background: linear-gradient(to bottom right, #50a3a2 0%, #53e3a6 100%);
+    background: #fecf8e;
+  background: -webkit-linear-gradient(top left, #fecf8e 0%, #feae42 100%);
+  background: linear-gradient(to bottom right, #fecf8e 0%, #fecf8e 100%);
 }
 .wrapper {
-  background: #50a3a2;
-  background: -webkit-linear-gradient(top left, #50a3a2 0%, #53e3a6 100%);
-  background: linear-gradient(to bottom right, #50a3a2 0%, #53e3a6 100%);
+  background: #fe980f;
+  background: -webkit-linear-gradient(top left, #fe980f 0%, #fdce42 100%);
+  background: linear-gradient(to bottom right, #fe980f 0%, #fdce42 100%);
   position: absolute;
   left: 0;
   width: 100%;

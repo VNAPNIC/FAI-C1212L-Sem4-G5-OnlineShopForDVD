@@ -18,6 +18,7 @@
         
         <action name="logout" class="controller.LogOutActionSupport">
             <result name="success">/home.jsp</result>
+            <result name="input">/mainadmin.jsp</result>
         </action>
         
         <action name="rslogin" class="controller.RegisterActionSupport">
@@ -34,16 +35,11 @@
             <result name="input">/loginadmin.jsp</result>
         </action>
         
-        <action name="adlogin" class="controller.LoginAdActionSupport">
-            <result name="success">/home.jsp</result>
-            <result name="input">/home.jsp</result>
-        </action>
-        
         <action name="Details" class="controller.DetailsActionSupport">
             <result name="success">/product-details.jsp</result>         
             <result name="error">/404.html</result>
         </action>
-         <action name="Categories" class="controller.CategoriesActionSupport" >
+        <action name="Categories" class="controller.CategoriesActionSupport" >
             <result name="success">/index.jsp</result>
             <result name="error">/404.html</result>
         </action>
@@ -53,7 +49,7 @@
             <result name="error">/404.html</result>
         </action>
         
-         <action name="Quantity" class="controller.QuantityActionSupport" >
+        <action name="Quantity" class="controller.QuantityActionSupport" >
             <result name="success">/cart.jsp</result>
             <result name="error">/404.html</result>
         </action>
@@ -64,10 +60,29 @@
             <result name="back">/cart.jsp</result>
         </action>
         
-          <action name="toCar" class="controller.SuccessActionSupport" >
+        <action name="toCar" class="controller.SuccessActionSupport" >
             <result name="success">/success.jsp</result>
             <result name="none">/home.jsp</result>
             <result name="error">/404.html</result>
+        </action>
+        <action name="controlPanel" class="controller.StatisticsActionSupport">
+            <result name="success">/statistics.jsp</result>
+            <result name="error">/404.html</result>
+        </action>
+        <action name="ViewOrderDetail" class="controller.ViewOrderDetailActionSupport">
+            <result name="success">/statistics.jsp</result>
+            <result name="error">/404.html</result>
+        </action>
+        <action name="Confirm" class="controller.ConfirmActionSupport">
+            <result name="success">/mainadmin.jsp</result>
+            <result name="error">/404.html</result>
+        </action>
+        <action name="removeOrderDetail" class="controller.RemoveOrderDetailActionSupport">
+            <result name="success">/mainadmin.jsp</result>
+            <result name="error">/404.html</result>
+        </action>
+        <action name="Search" class="controller.SearchActionSupport">
+            <result name ="success">/index.jsp</result>
         </action>
     </package>
 </struts>

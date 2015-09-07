@@ -26,8 +26,37 @@ public class ProductsModel extends DataAccessHelper {
     private final String GET_PRODUCT_BY_CATE = "SELECT * FROM Products WHERE c_id = ? and active=?";
     private final String GET_HOT_TOP3 = "select TOP(3) * from "
             + "Products p inner join ProductManager pm on p.p_id = pm.p_id ORDER  by pm.count DESC";
-
+    private final String SEARCHING_BY_NAME = "SELECT * FROM Products WHERE name LIKE ? and active=?";
     Connection conn = null;
+
+    public ArrayList<Products> Search(String txtSearch) {
+        ArrayList<Products> proList = new ArrayList<>();
+        try {
+            conn = getConnection();
+            PreparedStatement ps = conn.prepareStatement(SEARCHING_BY_NAME);
+            ps.setString(1, "%" + txtSearch + "%");
+            ps.setBoolean(2, true);
+            ResultSet rs = ps.executeQuery();
+            if (rs != null) {
+                while (rs.next()) {
+                    Products item = new Products();
+                    item.setP_id(rs.getInt("p_id"));
+                    item.setName(rs.getString("name"));
+                    item.setMonney(rs.getFloat("monney"));
+                    item.setDescription(rs.getString("description"));
+                    item.setImg(rs.getString("img"));
+                    item.setUrl("https://www.youtube.com/embed/" + rs.getString("url"));
+                    item.setRank(rs.getInt("rank"));
+                    item.setC_id(rs.getInt("c_id"));
+                    item.setActive(rs.getBoolean("active"));
+                    proList.add(item);
+                }
+            }
+            conn.close();
+        } catch (Exception e) {
+        }
+        return proList;
+    }
 
     public ArrayList<Products> getList() {
         ArrayList<Products> proList = new ArrayList<>();
@@ -151,7 +180,7 @@ public class ProductsModel extends DataAccessHelper {
             if (con != null) {
                 PreparedStatement ps = con.prepareStatement(GET_HOT_TOP3);
                 ResultSet rs = ps.executeQuery();
-                while(rs.next()) {
+                while (rs.next()) {
                     Products item = new Products();
                     item.setP_id(rs.getInt("p_id"));
                     item.setName(rs.getString("name"));

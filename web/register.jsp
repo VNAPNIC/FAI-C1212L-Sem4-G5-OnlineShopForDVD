@@ -36,13 +36,14 @@
 
     <body>
         <%@include file="headerLR.jsp" %>
+         
 
         <section>
             <div class="wrapper">
                 <div class="container">
                     <div class="row">
                         <div class="col-sm-12">
-                            <h1>SIGN UP</h1>
+                           <h1>SIGN UP</h1>
                             <Center>
                                 <s:form cssClass="form" action="rslogin" method="Post">
                                     <table>
@@ -54,25 +55,22 @@
                                 </s:form>
 
                             </Center>
+                            <ul class="bg-bubbles">
+                                <li></li>
+                                <li></li>
+                                <li></li>
+                                <li></li>
+                                <li></li>
+                                <li></li>
+                                <li></li>
+                                <li></li>
+                                <li></li>
+                                <li></li>
+                            </ul>
 
                         </div>
-
-                        <ul class="bg-bubbles">
-                            <li></li>
-                            <li></li>
-                            <li></li>
-                            <li></li>
-                            <li></li>
-                            <li></li>
-                            <li></li>
-                            <li></li>
-                            <li></li>
-                            <li></li>
-                        </ul>
-
                     </div>
                 </div>
-            </div>
         </section>
         <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
 

@@ -56,6 +56,7 @@
                                     <li ><a href="#"><i class="fa fa-user">&nbsp;Hello: ${sessionScope.login} </i> </a></li>
                                     <li>
                                     <s:url action="logout.action" var="urlTag" >
+                                        <s:param name="lo">1</s:param>
                                     </s:url>
                                     <s:a href="%{urlTag}"><i class="fa fa-unlock">&nbsp;Logout</i></s:a>
                                     </li>
@@ -65,13 +66,24 @@
                                     <li><a href="login.jsp"><i class="fa fa-lock"></i> Login</a></li>
                                 </c:otherwise>
                             </c:choose>
-                         
+
                         </ul>
                     </div>
+
                 </div>
+
+                <div class="search_box pull-right" style="margin-top: 2%;">
+                    <section>
+                        <s:form action="Search" cssStyle="float:right;">
+                            <s:textfield id="tags" name="txtSearch" placeholder="Search" cssClass="tb5"></s:textfield>
+                        </s:form>
+                    </section>
+                </div>
+
             </div>
         </div>
     </div><!--/header-middle-->
+
 
     <div class="header-bottom"><!--header-bottom-->
         <div class="container">
