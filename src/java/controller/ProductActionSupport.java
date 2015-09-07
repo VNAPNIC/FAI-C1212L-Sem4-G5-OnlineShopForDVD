@@ -54,7 +54,7 @@ public class ProductActionSupport extends ActionSupport {
         try{
             ProductsModel pm;
             pm = new ProductsModel();
-            this.productList = pm.getList();
+            this.productList = pm.getList(true);
             pm = new ProductsModel();
             this.products = pm.getHot();
             CategoriesModel ct = new CategoriesModel();

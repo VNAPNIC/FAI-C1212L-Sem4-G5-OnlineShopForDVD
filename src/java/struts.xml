@@ -84,5 +84,16 @@
         <action name="Search" class="controller.SearchActionSupport">
             <result name ="success">/index.jsp</result>
         </action>
+        
+        <action name="showProductAD" class="controller.ProductADActionSupport">
+            <result name="success">/productsAD.jsp</result>
+            <result name="error">/404.html</result>
+        </action>
+        
+       
+        <action name="createPr" class="controller.UploadImgActionSupport">
+            <result name="success">/showPRAD.jsp</result>
+            <result name="input">/statistics.jsp</result>
+        </action>
     </package>
 </struts>

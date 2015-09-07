@@ -5,7 +5,7 @@
             <a href="mainadmin.jsp"><i class="icon-chevron-right"></i>Statistics</a>
         </li>
         <li>
-            <a href="productsAD.jsp"><i class="icon-chevron-right"></i> Products</a>
+            <a href="showProductAD.action"><i class="icon-chevron-right"></i> Products</a>
         </li>
         <li>
             <a href="#"><i class="icon-chevron-right"></i> Categories</a>
