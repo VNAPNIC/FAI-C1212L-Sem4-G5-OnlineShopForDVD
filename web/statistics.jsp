@@ -38,7 +38,7 @@
                                 </div>
                                 <div class="span6">
 
-                                    <div class="chart-bottom-heading"><span  style="padding: 2%;" class="label label-info"><h3>Revenue</h3><h1><s:property value="totalSUM" />$</h1></span>
+                                    <div class="chart-bottom-heading"><span  style="padding: 2%;" class="label label-info"><h3>Total</h3><h1><s:property value="totalSUM" />$</h1></span>
 
                                     </div>
                                 </div>
@@ -47,7 +47,7 @@
                         </div>
                         <!-- /block -->
                     </div>
-                                    
+
                     <div class="row-fluid">
                         <!-- block -->
                         <div class="block">
@@ -114,10 +114,10 @@
                                             </s:iterator>
                                         </tbody>
                                     </table>
-                                    </div>
                                 </div>
                             </div>
                         </div>
+                    </div>
 
                     <div class="row-fluid">
                         <!-- block -->
@@ -158,32 +158,74 @@
                                             </s:iterator>
                                         </tbody>
                                     </table>
-                                   
+
                                 </div>
                             </div>
                             <!-- /block -->
                         </div>
-
                     </div>
+
+                    <div class="row-fluid">
+                        <!-- block -->
+                        <div class="block">
+                            <div class="navbar navbar-inner block-header">
+                                <div class="muted pull-left">Bootstrap dataTables with Toolbar</div>
+                            </div>
+                            <div class="block-content collapse in">
+                                <div class="span12">
+
+
+                                    <table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered" id="example2">
+                                        <thead>
+                                            <tr>
+                                                <th>Name</th>
+                                                <th>money</th>
+                                                <th>youtobe</th>
+                                                <th>imges</th>
+                                                <th>views</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <s:iterator value="managers">
+                                                <tr class="odd gradeX">
+                                                    <td><s:property value="p.name"/></td>
+                                                    <td><s:property value="p.monney"/>$</td>
+                                                    <td ><a href="<s:property value="p.url"/>"><s:property value="p.url"/></a></td>
+                                                    <td class="center"><img width="50" height="100"  src="<s:property value="p.img"/>" alt="" /></td>
+                                                    <td class="center"><s:property value="couunt"/> view</td>
+                                                </tr>
+                                            </s:iterator>
+                                        </tbody>
+                                    </table>
+
+                                   
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /block -->
+                    </div>
+
+
                 </div>
-                <hr>
-                <footer>
-                    <p>&copy; G5</p>
-                </footer>
             </div>
-            <!--/.fluid-container-->
+            <hr>
+            <footer>
+                <p>&copy; G5</p>
+            </footer>
+        </div>
+        <!--/.fluid-container-->
 
-            <script src="vendors/jquery-1.9.1.js"></script>
-            <script src="bootstrap/js/bootstrap.min.js"></script>
-            <script src="vendors/datatables/js/jquery.dataTables.min.js"></script>
+        <script src="vendors/jquery-1.9.1.js"></script>
+        <script src="bootstrap/js/bootstrap.min.js"></script>
+        <script src="vendors/datatables/js/jquery.dataTables.min.js"></script>
 
 
-            <script src="assets/scripts.js"></script>
-            <script src="assets/DT_bootstrap.js"></script>
-            <script>
-                $(function () {
+        <script src="assets/scripts.js"></script>
+        <script src="assets/DT_bootstrap.js"></script>
+        <script>
+            $(function () {
 
-                });
-            </script>
+            });
+        </script>
     </body>
 </html>

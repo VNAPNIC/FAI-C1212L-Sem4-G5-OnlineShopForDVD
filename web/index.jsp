@@ -107,7 +107,12 @@
                                                 </div>
                                                 <div class="product-overlay">
                                                     <div class="overlay-content">
-                                                        <p><s:property value="description"/></p>
+
+
+                                                        <img height="230px" width="190px" src="<s:property value="img"/>" alt="" />
+                                                        <br > <br >
+                                                        <p style="color: white;"><s:property value="name"/></p>
+                                                        <p style="color: white;"><s:property value="monney"/>$</p>
                                                         <s:url action="Details" var="detail">
                                                             <s:param name="id">${p_id}</s:param>
                                                             <s:param name="idct">${c_id}</s:param>
@@ -122,6 +127,7 @@
                             </div>
 
                             <center>
+                                <hr style="width: 100%;"/>
                                 <div class="btn add-to-cart text-center" id="loadMore" style="width: 35%;background-color: #FE980F">Load more</div>
                             </center>
 

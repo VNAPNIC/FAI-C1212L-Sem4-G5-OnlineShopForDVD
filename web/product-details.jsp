@@ -68,7 +68,7 @@
                                                 Add to cart
                                             </s:a>
                                         </span>
-                                        <p><b>Description:</b> <s:property value="description"/></p>
+                                            <p><b>Description:</b>  <s:text name="description" /> </p>
                                         <p><b>Brand:</b> DVD-SHOPPER</p>
                                         <a href=""><img src="images/product-details/share.png" class="share img-responsive"  alt="" /></a>
 
@@ -80,7 +80,7 @@
                             <hr />
                             <s:iterator value="productDetail">
                                 <h2 style="color: #FE980F;">Trailer film: <s:property value="name"/></h2>
-                                <p><b>Description:</b> <s:property value="description"/></p>
+                                <p><b>Description:</b> <s:text name="description" /></p>
                                 <br />
                                 <iframe width="560" height="315" src="<s:property value="url"/>" frameborder="0" allowfullscreen></iframe>
                             </s:iterator>

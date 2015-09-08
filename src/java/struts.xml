@@ -92,8 +92,20 @@
         
        
         <action name="createPr" class="controller.UploadImgActionSupport">
-            <result name="success">/showPRAD.jsp</result>
-            <result name="input">/statistics.jsp</result>
+            <interceptor-ref name="fileUpload">  
+                <param name="maximumSize">1000000</param>  
+                <param name="allowedTypes">  
+                    image/png,image/gif,video/*  
+                </param>  
+                <param name="allowedExtensions">  
+                    .doc,.jar,.png,.mp4  
+                </param>  
+            </interceptor-ref>   
+            <interceptor-ref name="defaultStack"></interceptor-ref>  
+            <result name="success">/productsAD.jsp</result>
+            <result name="input">/showPRAD.jsp</result>
+            <result name="error">/404.html</result>
         </action>
+        
     </package>
 </struts>

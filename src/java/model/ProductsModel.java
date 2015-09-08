@@ -25,12 +25,80 @@ public class ProductsModel extends DataAccessHelper {
     private final String GET_PRODUCT_BY_CATE_TOP3 = "SELECT TOP 3 * FROM Products WHERE c_id = ? and active=? and p_id !=?";
     private final String GET_PRODUCT_BY_CATE = "SELECT * FROM Products WHERE c_id = ? and active=?";
     private final String GET_HOT_TOP3 = "select TOP(3) * from "
-            + "Products p inner join ProductManager pm on p.p_id = pm.p_id ORDER  by pm.count DESC";
+            + "Products p inner join ProductManager pm on p.p_id = pm.p_id where p.active = 1 ORDER  by pm.count DESC";
     private final String SEARCHING_BY_NAME = "SELECT * FROM Products WHERE name LIKE ? and active=?";
     private final String GET_ALL = "select * from Products";
     private final String ADD_PRODUCT = "insert into Products values (?,?,?,?,?,?,?,?)";
+    private final String UPDATE_ACTIVE = "update Products set active=? where p_id=?";
+    private final String REMOVE = "DELETE FROM Products where p_id=?";
+    private final String UPDATE = "update Products set name=?,monney=?,description=?,url=?,img=?,c_id=? where p_id=?";
 
     Connection conn = null;
+
+    public boolean UpdatePD(Products p) {
+        boolean check = false;
+        try {
+            con = getConnection();
+            if (con != null) {
+                PreparedStatement ps = con.prepareStatement(UPDATE);
+                ps.setString(1, p.getName());
+                ps.setFloat(2, p.getMonney());
+                ps.setString(3, p.getDescription());
+                ps.setString(4, p.getUrl());
+                ps.setString(5, p.getImg());
+                ps.setInt(6, p.getC_id());
+                ps.setInt(7, p.getP_id());
+                int rs = ps.executeUpdate();
+                if (rs > 0) {
+                    check = true;
+                }
+            }
+            getClose();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        return check;
+    }
+
+    public boolean UpdateActive(boolean active, int p_id) {
+        boolean check = false;
+        try {
+            con = getConnection();
+            if (con != null) {
+                PreparedStatement ps = con.prepareStatement(UPDATE_ACTIVE);
+                ps.setBoolean(1, active);
+                ps.setInt(2, p_id);
+                int rs = ps.executeUpdate();
+                if (rs > 0) {
+                    check = true;
+                }
+            }
+            getClose();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+
+        return check;
+    }
+
+    public boolean RemoveP(int p_id) {
+        boolean check = false;
+        try {
+            con = getConnection();
+            if (con != null) {
+                PreparedStatement ps = con.prepareStatement(REMOVE);
+                ps.setInt(1, p_id);
+                int rs = ps.executeUpdate();
+                if (rs > 0) {
+                    check = true;
+                }
+            }
+            getClose();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        return check;
+    }
 
     public ArrayList<Products> Search(String txtSearch) {
         ArrayList<Products> proList = new ArrayList<>();
@@ -60,22 +128,22 @@ public class ProductsModel extends DataAccessHelper {
         }
         return proList;
     }
-    
-    public boolean AddProduct(Products p){
+
+    public boolean AddProduct(Products p) {
         boolean check = false;
-          try {
+        try {
             conn = getConnection();
             PreparedStatement ps = conn.prepareStatement(ADD_PRODUCT);
             ps.setString(1, p.getName());
             ps.setFloat(2, p.getMonney());
             ps.setString(3, p.getDescription());
-            ps.setString(4,p.getUrl());
+            ps.setString(4, p.getUrl());
             ps.setString(5, p.getImg());
             ps.setInt(6, p.getC_id());
             ps.setInt(7, 0);
             ps.setBoolean(8, false);
             int rs = ps.executeUpdate();
-            if(rs > 0){
+            if (rs > 0) {
                 check = true;
             }
             conn.close();

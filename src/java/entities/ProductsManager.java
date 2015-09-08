@@ -15,6 +15,16 @@ public class ProductsManager {
     int couunt;
     boolean hot;
     float sale;
+    Products p;
+
+    public Products getP() {
+        return p;
+    }
+
+    public void setP(Products p) {
+        this.p = p;
+    }
+    
 
     public int getPm() {
         return pm;

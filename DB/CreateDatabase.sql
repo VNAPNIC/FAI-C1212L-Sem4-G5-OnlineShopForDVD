@@ -85,7 +85,7 @@ create table Products
 	p_id int identity (1,1) primary key,
 	name nvarchar(250) not null,
 	monney float default 0 not null, 
-	[description] nvarchar(250) not null,
+	[description] nvarchar(max) not null,
 	url varchar(150),
 	img varchar(150),
 	c_id int,
@@ -108,21 +108,13 @@ create table PaymentType
 	[type] nvarchar(50)
 )
 
-create table Quantity
-(
-	q_id int identity (1,1) primary key,
-	number int default 1,
-	price float,
-	p_id int,
-	constraint fk_Quantity foreign key(p_id) references Products(p_id)
-)
+
 
 create table HistoryOder
 (
 	ho_id int identity (1,1) primary key,
 	dateoder varchar(50) not null,
 	[user] varchar(20) not null,
-	q_id int,
 	pt_id int,
 	amount int,
 	monney float,
@@ -132,8 +124,18 @@ create table HistoryOder
 	addressship nvarchar(50),
 	phoneship nvarchar(50),
 	constraint fk_HistoryOderLogin foreign key([user]) references [Login]([user]),
-	constraint fk_HistoryOderQuantity foreign key(q_id) references Quantity(q_id),
 	constraint fk_HistoryOderPaymentType foreign key(pt_id) references PaymentType(pt_id)
+)
+
+create table Quantity
+(
+	q_id int identity (1,1) primary key,
+	number int default 1,
+	price float,
+	p_id int,
+	ho_id int,
+	constraint fk_Quantity foreign key(p_id) references Products(p_id),
+	constraint fk_HistoryOderQuantity foreign key(ho_id) references HistoryOder(ho_id)
 )
 
 create table HistoryManager

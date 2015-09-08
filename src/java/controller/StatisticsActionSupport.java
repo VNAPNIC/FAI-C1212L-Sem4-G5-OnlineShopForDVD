@@ -8,6 +8,7 @@ package controller;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import entities.HistoryOder;
+import entities.ProductsManager;
 import java.util.List;
 import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
@@ -29,6 +30,17 @@ public class StatisticsActionSupport extends ActionSupport implements SessionAwa
     int sumView;
     float totalSUM;
     List<HistoryOder> objs;
+    List<ProductsManager> managers;
+
+    public List<ProductsManager> getManagers() {
+        return managers;
+    }
+
+    public void setManagers(List<ProductsManager> managers) {
+        this.managers = managers;
+    }
+    
+    
 
     public float getTotalSUM() {
         return totalSUM;
@@ -91,6 +103,9 @@ public class StatisticsActionSupport extends ActionSupport implements SessionAwa
         
         hom = new HistoryOderModel();
         objs = hom.getALL();
+        
+        pmm = new productsManagerModel();
+        managers = pmm.getViewP();
 
         sessionMap.put("co", countOder);
         sessionMap.put("cr", countReport);

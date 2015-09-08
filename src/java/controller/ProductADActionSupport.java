@@ -18,6 +18,7 @@ public class ProductADActionSupport extends ActionSupport {
 
     List<Products> objs;
 
+    
     public List<Products> getObjs() {
         return objs;
     }

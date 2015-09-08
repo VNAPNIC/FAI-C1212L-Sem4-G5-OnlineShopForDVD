@@ -8,6 +8,7 @@ package controller;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import entities.HistoryOder;
+import entities.ProductsManager;
 import entities.Quantity;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
@@ -23,6 +24,15 @@ import org.apache.struts2.ServletActionContext;
 public class ViewOrderDetailActionSupport extends ActionSupport {
 
     List<Quantity> quantitys;
+    List<ProductsManager> managers;
+
+    public List<ProductsManager> getManagers() {
+        return managers;
+    }
+
+    public void setManagers(List<ProductsManager> managers) {
+        this.managers = managers;
+    }
 
     int sumView;
     float totalSUM;
@@ -79,6 +89,9 @@ public class ViewOrderDetailActionSupport extends ActionSupport {
 
             hom = new HistoryOderModel();
             objs = hom.getALL();
+
+            pmm = new productsManagerModel();
+            managers = pmm.getViewP();
 
         } catch (Exception ex) {
             ex.printStackTrace();

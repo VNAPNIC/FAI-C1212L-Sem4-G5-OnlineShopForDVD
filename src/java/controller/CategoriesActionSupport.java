@@ -11,6 +11,7 @@ import com.opensymphony.xwork2.ActionSupport;
 import entities.Categories;
 import entities.Products;
 import java.util.ArrayList;
+import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import model.CategoriesModel;
 import model.ProductsModel;
@@ -21,10 +22,18 @@ import org.apache.struts2.ServletActionContext;
  * @author Louis DeRossi
  */
 public class CategoriesActionSupport extends ActionSupport {
-    
-    
+
     ArrayList<Products> productList = new ArrayList<>();
     ArrayList<Categories> categoriesList = new ArrayList<>();
+    List<Products> products = new ArrayList<>();
+
+    public List<Products> getProducts() {
+        return products;
+    }
+
+    public void setProducts(List<Products> products) {
+        this.products = products;
+    }
 
     public ArrayList<Products> getProductList() {
         return productList;
@@ -44,12 +53,15 @@ public class CategoriesActionSupport extends ActionSupport {
 
     @Override
     public String execute() throws Exception {
-        HttpServletRequest request = (HttpServletRequest) ActionContext.getContext().get( ServletActionContext.HTTP_REQUEST);
+        HttpServletRequest request = (HttpServletRequest) ActionContext.getContext().get(ServletActionContext.HTTP_REQUEST);
         try {
-            ProductsModel pm = new ProductsModel();
+            ProductsModel pm;
+            pm = new ProductsModel();
             this.productList = pm.getProductByCate(Integer.parseInt(request.getParameter("c_id")));
             CategoriesModel ct = new CategoriesModel();
             this.categoriesList = ct.getAll();
+            pm = new ProductsModel();
+            this.products = pm.getHot();
 
         } catch (Exception ex) {
             ex.printStackTrace();

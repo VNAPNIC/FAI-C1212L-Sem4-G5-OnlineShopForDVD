@@ -5,16 +5,20 @@
  */
 package model;
 
+import entities.Products;
+import entities.ProductsManager;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
  * @author hainam1421
  */
 public class productsManagerModel extends DataAccessHelper {
-    
+
     Connection con = null;
     private static final String ADD_VIEW = "IF EXISTS(SELECT *\n"
             + "          FROM   ProductManager\n"
@@ -23,7 +27,36 @@ public class productsManagerModel extends DataAccessHelper {
             + "          ELSE\n"
             + "          insert into ProductManager(p_id) values (?)";
     private static final String GET_SUM = "SELECT SUM([count]) FROM ProductManager";
-    
+
+    private final String GET_VIEW_PRODUCTS = "select * from "
+            + "Products p inner join ProductManager pm on p.p_id = pm.p_id";
+
+    public List<ProductsManager> getViewP() {
+        List<ProductsManager> pm = new ArrayList<>();
+        try {
+            con = getConnection();
+            if (con != null) {
+                PreparedStatement ps = con.prepareStatement(GET_VIEW_PRODUCTS);
+                ResultSet rs = ps.executeQuery();
+                while (rs.next()) {
+                    ProductsManager item = new ProductsManager();
+                    item.setCouunt(rs.getInt(12));
+                    Products p = new Products();
+                    p.setName(rs.getString(2));
+                    p.setMonney(rs.getFloat(3));
+                    p.setUrl("https://www.youtube.com/embed/" + rs.getString(5));
+                    p.setImg(rs.getString(6));
+                    item.setP(p);
+                    pm.add(item);
+                }
+            }
+            getClose();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        return pm;
+    }
+
     public boolean addView(int p_id) {
         boolean check = false;
         try {
@@ -38,13 +71,13 @@ public class productsManagerModel extends DataAccessHelper {
                     check = true;
                 }
             }
-            
+
         } catch (Exception ex) {
             ex.printStackTrace();
         }
         return check;
     }
-    
+
     public int getSum() {
         int count = 0;
         try {
@@ -56,7 +89,7 @@ public class productsManagerModel extends DataAccessHelper {
                     count = rs.getInt(1);
                 }
             }
-            
+
         } catch (Exception ex) {
             ex.printStackTrace();
         }
