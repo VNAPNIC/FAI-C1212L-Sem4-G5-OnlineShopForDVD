@@ -15,17 +15,15 @@ import model.ProductsModel;
  */
 public class PDUpdateSuccessActionSupport extends ActionSupport {
     
-    Products p;
-    
-    public Products getP() {
-        return p;
+    Products prr;
+
+    public Products getPrr() {
+        return prr;
     }
 
-    public void setP(Products p) {
-        this.p = p;
+    public void setPrr(Products prr) {
+        this.prr = prr;
     }
-    
-    
     
     public PDUpdateSuccessActionSupport() {
     }
@@ -33,7 +31,7 @@ public class PDUpdateSuccessActionSupport extends ActionSupport {
     @Override
     public String execute() throws Exception {
         ProductsModel pm = new ProductsModel();
-        if(pm.UpdatePD(p)){
+        if(pm.UpdatePD(prr)){
             return SUCCESS;
         }else{
             return ERROR;

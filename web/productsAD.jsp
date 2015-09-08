@@ -52,7 +52,7 @@
                                                     <td><s:property value="monney"/>$</td>
                                                     <td ><a style="font-size: 11px;"  href="<s:property value="url"/>"><s:property value="url"/></a></td>
                                                     <td class="center"><img width="50" height="100"  src="<s:property value="img"/>" alt="" /></td>
-                                                    
+
                                                     <td  class="center">
                                                         <s:if test="active">
                                                             <s:url action="PDActiveFalse" var="URLactive">
@@ -74,7 +74,7 @@
                                                         </s:url>
                                                         <s:a href="%{URLedit}">Edit</s:a>
                                                         </td>
-
+                                                                
                                                         <td class="center">
                                                         <s:url action="PDRemove" var="URLremove">
                                                             <s:param name="p_id">${p_id}</s:param>
@@ -100,26 +100,26 @@
                                 <div class="span12">
                                     <s:if test="updatestt">
 
-                                        <s:form action="PDUpdateSuccess" class="form-horizontal" enctype="multipart/form-data">
-                                            <s:iterator value="pro">
+
+                                        <s:iterator value="pro">
+                                            <s:form action="PDUpdateSuccess" class="form-horizontal" enctype="multipart/form-data">
                                                 <fieldset>
-                                                    <s:textfield  readonly="true" value="%{p_id}" placeholder="Product Name" name="p.p_id" cssClass="input-xlarge focused" id="focusedInput" type="text"  />
-                                                    
-                                                    <s:textfield value="%{name}" placeholder="Product Name" name="p.name" cssClass="input-xlarge focused" id="focusedInput" type="text"  />
+                                                    <s:textfield  readonly="true" value="%{p_id}" placeholder="Product Name" name="prr.p_id" cssClass="input-xlarge focused" id="focusedInput" type="text"  />
 
-                                                    <s:textfield value="%{monney}" placeholder="Money" type="number" name="p.monney"  min="0" max="9999" step="0.01" size="4" cssClass="input-xlarge focused"/>
+                                                    <s:textfield value="%{name}" placeholder="Product Name" name="prr.name" cssClass="input-xlarge focused" id="focusedInput" type="text"  />
 
-                                                    <s:textfield value="%{c_id}" placeholder="Category ID" name="p.c_id" type="number" cssClass="input-xlarge focused"/>
+                                                    <s:textfield value="%{monney}" placeholder="Money" type="number" name="prr.monney"  min="0" max="9999" step="0.01" size="4" cssClass="input-xlarge focused"/>
 
-                                                    <s:textfield value="%{url}" placeholder="embed: youtube" name="p.url" cssClass="input-xlarge focused" id="focusedInput" type="text"  />
+                                                    <s:textfield value="%{c_id}" placeholder="Category ID" name="prr.c_id" type="number" cssClass="input-xlarge focused"/>
 
-                                                    <s:textarea value="%{description}" name="p.description" cssClass="input-xlarge textarea" placeholder="Enter text ..." style="width: 810px; height: 200px" />
+                                                    <s:textarea value="%{description}" name="prr.description" cssClass="input-xlarge textarea" placeholder="Enter text ..." style="width: 810px; height: 200px" />
 
                                                     <s:submit type="submit" cssClass="btn btn-primary" value="Save Chages"></s:submit>
 
                                                     </fieldset>
-                                            </s:iterator>
-                                        </s:form>
+                                            </s:form>
+                                        </s:iterator>
+
 
                                     </s:if>
                                     <s:else>

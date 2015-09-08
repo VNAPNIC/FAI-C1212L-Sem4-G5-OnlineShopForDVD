@@ -120,9 +120,14 @@
             <result name="error">/404.html</result>
         </action>
         
-        <action name="PDUpdateSuccess" class="">
+        <action name="PDUpdateSuccess" class="controller.PDUpdateSuccessActionSupport">
             <result name="success">/showPRAD.jsp</result>
             <result name="error">/404.html</result>
+        </action>
+        
+        <action name="PDRemove" class="controller.PDRemoveActionSupport">
+            <result name="success">/showPRAD.jsp</result>
+            <result name="error">/showPRAD.jsp</result>
         </action>
         
     </package>
