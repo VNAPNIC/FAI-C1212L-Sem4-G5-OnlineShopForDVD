@@ -52,35 +52,34 @@
                                                     <td><s:property value="monney"/>$</td>
                                                     <td ><a style="font-size: 11px;"  href="<s:property value="url"/>"><s:property value="url"/></a></td>
                                                     <td class="center"><img width="50" height="100"  src="<s:property value="img"/>" alt="" /></td>
+                                                    
                                                     <td  class="center">
                                                         <s:if test="active">
-                                                            <s:url action="eventActivePD" var="at">
-                                                                <s:param name="stt">1</s:param>
+                                                            <s:url action="PDActiveFalse" var="URLactive">
                                                                 <s:param name="p_id">${p_id}</s:param>
                                                             </s:url>
-                                                            <s:a href="%{at}" >Active</s:a>
+                                                            <s:a href="%{URLactive}" > Active </s:a>
                                                         </s:if>
                                                         <s:else>
-                                                            <s:url action="eventActivePD" var="at">
-                                                                <s:param name="stt">2</s:param>
+                                                            <s:url action="PDTrue" var="URLactive">
                                                                 <s:param name="p_id">${p_id}</s:param>
                                                             </s:url>
-                                                            <s:a href="%{at}" style="color: black;" >Deactive</s:a>
+                                                            <s:a href="%{URLactive}" > Deactive </s:a>
                                                         </s:else>
                                                     </td>
 
                                                     <td class="center"> 
-                                                        <s:url action="eventUpdatePD" var="edit">
+                                                        <s:url action="PDUpdate" var="URLedit">
                                                             <s:param name="p_id">${p_id}</s:param>
                                                         </s:url>
-                                                        <s:a href="%{edit}">Edit</s:a>
+                                                        <s:a href="%{URLedit}">Edit</s:a>
                                                         </td>
 
                                                         <td class="center">
-                                                        <s:url action="eventPD" var="remove">
+                                                        <s:url action="PDRemove" var="URLremove">
                                                             <s:param name="p_id">${p_id}</s:param>
                                                         </s:url>
-                                                        <s:a href="%{remove}">Remove</s:a>
+                                                        <s:a href="%{URLremove}">Remove</s:a>
                                                         </td>
                                                     </tr>
                                             </s:iterator>
@@ -101,24 +100,20 @@
                                 <div class="span12">
                                     <s:if test="updatestt">
 
-                                        <s:form action="createPr" class="form-horizontal" enctype="multipart/form-data">
+                                        <s:form action="PDUpdateSuccess" class="form-horizontal" enctype="multipart/form-data">
                                             <s:iterator value="pro">
                                                 <fieldset>
+                                                    <s:textfield  readonly="true" value="%{p_id}" placeholder="Product Name" name="p.p_id" cssClass="input-xlarge focused" id="focusedInput" type="text"  />
+                                                    
+                                                    <s:textfield value="%{name}" placeholder="Product Name" name="p.name" cssClass="input-xlarge focused" id="focusedInput" type="text"  />
 
-                                                    <s:textfield value="name" placeholder="Product Name" name="p.name" cssClass="input-xlarge focused" id="focusedInput" type="text"  />
+                                                    <s:textfield value="%{monney}" placeholder="Money" type="number" name="p.monney"  min="0" max="9999" step="0.01" size="4" cssClass="input-xlarge focused"/>
 
-                                                    <s:textfield value="monney" placeholder="Money" type="number" name="p.monney"  min="0" max="9999" step="0.01" size="4" cssClass="input-xlarge focused"/>
+                                                    <s:textfield value="%{c_id}" placeholder="Category ID" name="p.c_id" type="number" cssClass="input-xlarge focused"/>
 
-                                                    <s:textfield value="c_id" placeholder="Category ID" name="p.c_id" type="number" cssClass="input-xlarge focused"/>
+                                                    <s:textfield value="%{url}" placeholder="embed: youtube" name="p.url" cssClass="input-xlarge focused" id="focusedInput" type="text"  />
 
-                                                    <s:textfield value="url" placeholder="embed: youtube" name="p.url" cssClass="input-xlarge focused" id="focusedInput" type="text"  />
-
-                                                    <s:file value="img"  cssClass="input-file uniform_on" id="fileInput" type="file" name="inputFile"   
-                                                            title="Choose File to Upload"  
-                                                            accept="image/png,image/gif,video/*"   
-                                                            />  
-
-                                                    <s:textarea value="description" name="p.description" cssClass="input-xlarge textarea" placeholder="Enter text ..." style="width: 810px; height: 200px" />
+                                                    <s:textarea value="%{description}" name="p.description" cssClass="input-xlarge textarea" placeholder="Enter text ..." style="width: 810px; height: 200px" />
 
                                                     <s:submit type="submit" cssClass="btn btn-primary" value="Save Chages"></s:submit>
 

@@ -164,5 +164,6 @@ create table FeedBack
 	[user] varchar(20) not null,
 	datefb varchar(50) not null,
 	Content nvarchar(250) not null,
+	active bit,
 	constraint fk_FeedBackLogin foreign key([user]) references [Login]([user]),
 )

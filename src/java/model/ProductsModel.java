@@ -31,7 +31,7 @@ public class ProductsModel extends DataAccessHelper {
     private final String ADD_PRODUCT = "insert into Products values (?,?,?,?,?,?,?,?)";
     private final String UPDATE_ACTIVE = "update Products set active=? where p_id=?";
     private final String REMOVE = "DELETE FROM Products where p_id=?";
-    private final String UPDATE = "update Products set name=?,monney=?,description=?,url=?,img=?,c_id=? where p_id=?";
+    private final String UPDATE = "update Products set name=?,monney=?,description=?,url=?,c_id=? where p_id=?";
 
     Connection conn = null;
 
@@ -45,9 +45,8 @@ public class ProductsModel extends DataAccessHelper {
                 ps.setFloat(2, p.getMonney());
                 ps.setString(3, p.getDescription());
                 ps.setString(4, p.getUrl());
-                ps.setString(5, p.getImg());
-                ps.setInt(6, p.getC_id());
-                ps.setInt(7, p.getP_id());
+                ps.setInt(5, p.getC_id());
+                ps.setInt(6, p.getP_id());
                 int rs = ps.executeUpdate();
                 if (rs > 0) {
                     check = true;
